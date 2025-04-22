@@ -15,7 +15,7 @@
     "flag": "🇹🇷"
   },
   "TestPage": {
-    "description": "<p>Sayfa yol adları da uluslararasılaştırılmıştır.</p><p>Varsayılan dil olan İngilizce'yi kullanıyorsanız, bu sayfada tarayıcı adres çubuğunda <code>/en/pathnames</code> göreceksiniz.</p><p>Dili Türkçe'ye değiştirirseniz, URL buna göre yerelleştirilir (<code>/tr/deneme</code>).</p>",
+    "description": "<p>Sayfa yol adları da uluslararasılaştırılmıştır.</p><p>Varsayılan dil olan İngilizce'yi kullanıyorsanız, bu sayfada tarayıcı adres çubuğunda <code>/en/test</code> göreceksiniz.</p><p>Dili Türkçe'ye değiştirirseniz, URL buna göre yerelleştirilir (<code>/tr/deneme</code>).</p>",
     "title": "Test Sayfası (tr)"
   }
 }

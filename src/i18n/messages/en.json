@@ -15,7 +15,7 @@
     "flag": "🇺🇸"
   },
   "TestPage": {
-    "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to Turkish, the URL is localized accordingly (<code>/tr/deneme</code>).</p>",
+    "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/test</code> in the browser address bar on this page.</p><p>If you change the locale to Turkish, the URL is localized accordingly (<code>/tr/deneme</code>).</p>",
     "title": "Test Page (en)"
   }
 }
