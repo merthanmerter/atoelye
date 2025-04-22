@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Toaster } from "@/components/ui/sonner";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -90,6 +91,7 @@ export default async function RootLayout({ children, params }: Props) {
                 </div>
               </header>
               {children}
+              <SpeedInsights />
               <Toaster />
             </Providers>
           </NextIntlClientProvider>
