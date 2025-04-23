@@ -1,21 +1,29 @@
 {
   "HomePage": {
-    "description": "atølye.com (tr)",
+    "description": "atølye.com",
     "notLoggedIn": "Giriş yapmadınız",
     "signIn": "Giriş yap",
     "signOut": "Çıkış yap",
-    "title": "atølye (tr)"
+    "title": "atølye"
   },
   "Layout": {
+    "emailPlaceholder": "E-posta adresiniz",
+    "footerTagline": "Craftsmanship evolved.",
     "home": "Anasayfa",
+    "legal": "Yasal",
+    "navigation": "Gezinme",
+    "newsletter": "Bülten",
+    "privacy": "Gizlilik Politikası",
+    "subscribe": "Abone Ol",
+    "terms": "Kullanım Şartları",
     "test": "Deneme",
-    "title": "atølye (tr)"
+    "title": "atølye"
   },
   "LocaleSwitcher": {
     "flag": "🇹🇷"
   },
   "TestPage": {
     "description": "<p>Sayfa yol adları da uluslararasılaştırılmıştır.</p><p>Varsayılan dil olan İngilizce'yi kullanıyorsanız, bu sayfada tarayıcı adres çubuğunda <code>/en/test</code> göreceksiniz.</p><p>Dili Türkçe'ye değiştirirseniz, URL buna göre yerelleştirilir (<code>/tr/deneme</code>).</p>",
-    "title": "Test Sayfası (tr)"
+    "title": "Test Sayfası"
   }
 }

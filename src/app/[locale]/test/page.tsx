@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div className='max-w-[490px] mx-auto p-20'>
+      <div>
         <h1 className='text-2xl font-bold font-mono text-center mx-auto'>
           {t("title")}
         </h1>
@@ -27,8 +27,9 @@ export default async function Page() {
               <code className='font-mono text-muted-foreground'>{chunks}</code>
             ),
           })}
-
-          <TestPage user={session?.user} />
+          <div className='max-w-sm mx-auto my-6 bg-foreground text-background p-3 rounded-md my-2 font-mono text-xs whitespace-pre-line text-ellipsis overflow-hidden break-words'>
+            <TestPage user={session?.user} />
+          </div>
         </div>
       </div>
     </HydrationBoundary>

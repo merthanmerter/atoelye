@@ -1,10 +1,7 @@
-import LocaleToggle from "@/components/locale-toggle";
-import { ModeToggle } from "@/components/mode-toggle";
+import Footer from "@/components/footer";
+import Navigation from "@/components/navigation";
 import Providers from "@/components/providers";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Toaster } from "@/components/ui/sonner";
-import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -51,8 +48,6 @@ export default async function RootLayout({ children, params }: Props) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  const t = await getTranslations({ locale, namespace: "Layout" });
-
   return (
     <>
       <html
@@ -60,37 +55,14 @@ export default async function RootLayout({ children, params }: Props) {
         suppressHydrationWarning>
         <head />
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col`}>
           <NextIntlClientProvider>
             <Providers>
-              <header className='flex items-center gap-2 w-full justify-between h-16 px-4 bg-card border-b'>
-                <h1 className='font-bold font-mono'>{t("title")}</h1>
-                <div className='h-full flex items-center'>
-                  <div className='flex items-center gap-0.5'>
-                    <Button
-                      size='sm'
-                      variant='ghost'
-                      asChild>
-                      <Link href='/'>{t("home")}</Link>
-                    </Button>
-                    <Button
-                      size='sm'
-                      variant='ghost'
-                      asChild>
-                      <Link href='/test'>{t("test")}</Link>
-                    </Button>
-                  </div>
-                  <Separator
-                    orientation='vertical'
-                    className='mx-4'
-                  />
-                  <div className='flex items-center gap-2'>
-                    <ModeToggle />
-                    <LocaleToggle />
-                  </div>
-                </div>
-              </header>
-              {children}
+              <Navigation locale={locale} />
+              <main className='flex flex-col flex-1 px-4 py-3 @container/main'>
+                {children}
+              </main>
+              <Footer locale={locale} />
               <SpeedInsights />
               <Toaster />
             </Providers>

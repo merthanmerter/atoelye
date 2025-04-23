@@ -1,21 +1,29 @@
 {
   "HomePage": {
-    "description": "atoelye.com (en)",
+    "description": "atoelye.com",
     "notLoggedIn": "You are not logged in",
     "signIn": "Sign in",
     "signOut": "Sign out",
-    "title": "atølye (en)"
+    "title": "atølye"
   },
   "Layout": {
+    "emailPlaceholder": "Your email",
+    "footerTagline": "Craftsmanship evolved.",
     "home": "Home",
+    "legal": "Legal",
+    "navigation": "Navigation",
+    "newsletter": "Newsletter",
+    "privacy": "Privacy Policy",
+    "subscribe": "Subscribe",
+    "terms": "Terms of Service",
     "test": "Test",
-    "title": "atølye (en)"
+    "title": "atølye"
   },
   "LocaleSwitcher": {
-    "flag": "🇺🇸"
+    "flag": "🇬🇧"
   },
   "TestPage": {
     "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/test</code> in the browser address bar on this page.</p><p>If you change the locale to Turkish, the URL is localized accordingly (<code>/tr/deneme</code>).</p>",
-    "title": "Test Page (en)"
+    "title": "Test Page"
   }
 }

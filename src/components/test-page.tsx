@@ -41,15 +41,11 @@ export default function TestPage({ user }: { user: User | undefined }) {
   const isLoading = isFetching || isRefetching;
 
   if (!user) {
-    return (
-      <div className='bg-foreground text-background p-3 rounded-md my-2 font-mono text-xs whitespace-pre-line text-ellipsis overflow-hidden break-words'>
-        No user
-      </div>
-    );
+    return <div>No user</div>;
   }
 
   return (
-    <div className='bg-foreground text-background p-3 rounded-md my-2 font-mono text-xs whitespace-pre-line text-ellipsis overflow-hidden break-words'>
+    <div>
       <p>Client side fetch:</p>
       {error
         ? (error?.message ?? "Error")

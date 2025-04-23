@@ -4,13 +4,12 @@ import { headers } from "next/headers";
 import { cache } from "react";
 import { db } from "../server/db/db";
 import { account, session, user, verification } from "../server/db/schema";
-import { generateMaxAge } from "./max-age";
 
 export const auth = betterAuth({
   session: {
     cookieCache: {
       enabled: true,
-      maxAge: generateMaxAge("1 day"),
+      maxAge: 34560000,
     },
   },
   database: drizzleAdapter(db, {
