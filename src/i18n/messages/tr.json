@@ -16,6 +16,7 @@
     "privacy": "Gizlilik Politikası",
     "subscribe": "Abone Ol",
     "subscribeErrorDuplicate": "Bültene zaten abone oldunuz",
+    "subscribeErrorInvalidEmail": "Geçersiz e-posta adresi",
     "subscribeErrorUnknown": "Bültene abone olma hatası",
     "subscribeSuccess": "Bültene abone oldunuz",
     "terms": "Kullanım Şartları",

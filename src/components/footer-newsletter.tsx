@@ -1,19 +1,27 @@
 "use client";
-import { subscribeToNewsletter } from "@/server/proxy/subscribe-to-newsletter";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
-import { z } from "zod";
 import { Button } from "./ui/button";
 
 export default function FooterNewsletter() {
   const t = useTranslations("Layout");
 
   const subscribe = useMutation({
-    mutationFn: async (email: string) => {
-      const validatedEmail = z.string().email().parse(email);
-      return await subscribeToNewsletter(validatedEmail);
+    mutationFn: async (data: FormData) => {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        body: data,
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        throw new Error(json.message);
+      }
+
+      return json;
     },
     onSuccess: (res) => {
       toast.success(res.message);
@@ -30,9 +38,7 @@ export default function FooterNewsletter() {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.currentTarget);
-          const email = formData.get("email") as string;
-          if (!email) return;
-          subscribe.mutate(email);
+          subscribe.mutate(formData);
         }}
         className='relative max-w-80'>
         <input

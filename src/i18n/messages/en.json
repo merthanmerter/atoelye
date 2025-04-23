@@ -16,6 +16,7 @@
     "privacy": "Privacy Policy",
     "subscribe": "Subscribe",
     "subscribeErrorDuplicate": "You are already subscribed to the newsletter",
+    "subscribeErrorInvalidEmail": "Invalid email address",
     "subscribeErrorUnknown": "Failed to subscribe to the newsletter",
     "subscribeSuccess": "Thank you for subscribing to the newsletter",
     "terms": "Terms of Service",
