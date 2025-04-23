@@ -1,4 +1,5 @@
 "use client";
+import { rpc } from "@/lib/rpc";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -9,10 +10,11 @@ export default function FooterNewsletter() {
   const t = useTranslations("Layout");
 
   const subscribe = useMutation({
-    mutationFn: async (data: FormData) => {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        body: data,
+    mutationFn: async (email: string) => {
+      const res = await rpc.api.newsletter.$post({
+        form: {
+          email,
+        },
       });
 
       const json = await res.json();
@@ -37,8 +39,8 @@ export default function FooterNewsletter() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          subscribe.mutate(formData);
+          const email = new FormData(e.currentTarget).get("email") as string;
+          subscribe.mutate(email);
         }}
         className='relative max-w-80'>
         <input

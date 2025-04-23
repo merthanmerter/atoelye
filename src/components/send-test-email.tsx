@@ -1,31 +1,24 @@
 "use client";
 import { useSession } from "@/lib/auth-client";
+import { rpc } from "@/lib/rpc";
 import { useMutation } from "@tanstack/react-query";
-import { User } from "better-auth";
-import { Loader2 } from "lucide-react";
+import { Loader2, MailIcon } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
 
-const sendEmail = async (user: Partial<User>) => {
-  if (!user) return;
-  const response = await fetch("/api/send", {
-    method: "POST",
-    body: JSON.stringify({
-      name: user.name,
-      email: user.email,
-    }),
-  });
-  return await response.json();
-};
-
-export default function TestPage() {
+export default function SendTestEmail() {
   const { data: session } = useSession();
   const send = useMutation({
-    mutationFn: () =>
-      sendEmail({
-        email: session?.user.email,
-        name: session?.user.email,
-      }),
+    mutationFn: async () => {
+      if (!session) return null;
+      const res = await rpc.api.send.$post({
+        json: {
+          email: session.user.email,
+          name: session.user.name,
+        },
+      });
+      return await res.json();
+    },
     onSuccess: (data) => {
       toast.success(JSON.stringify(data));
     },
@@ -41,10 +34,11 @@ export default function TestPage() {
       className='text-xs'
       onClick={() => send.mutate()}>
       {send.isPending ? (
-        <Loader2 className='size-4 animate-spin mx-auto text-muted-foreground' />
+        <Loader2 className='size-4 animate-spin mr-1' />
       ) : (
-        "Send Test Email"
+        <MailIcon className='size-4 mr-1' />
       )}
+      Send Test Email
     </Button>
   );
 }

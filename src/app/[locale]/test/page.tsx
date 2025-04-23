@@ -1,6 +1,7 @@
 import RpcResponse from "@/components/rpc-response";
+import SendTestEmail from "@/components/send-test-email";
 import { getQueryClient } from "@/lib/query-client";
-import { rpc } from "@/server/routes";
+import { rpc } from "@/lib/rpc";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getTranslations } from "next-intl/server";
 
@@ -31,14 +32,9 @@ export default async function Page() {
             ),
           })}
 
-          {/* <div className='max-w-sm mx-auto my-6 bg-foreground text-background p-3 rounded-md my-2 font-mono text-xs whitespace-pre-line text-ellipsis overflow-hidden break-words'>
-            <TestPage user={session?.user} />
-          </div>
-          <code className='font-mono text-muted-foreground block'>
-            {JSON.stringify(rpcResponse)}
-          </code> */}
           <RpcResponse queryKey={["rpcResponseSSR"]} />
           <RpcResponse queryKey={["rpcResponseCSR"]} />
+          <SendTestEmail />
         </div>
       </div>
     </HydrationBoundary>
