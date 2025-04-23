@@ -1,9 +1,9 @@
+import { db } from "@/server/db";
+import { account, session, user, verification } from "@/server/db/schema";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { headers } from "next/headers";
 import { cache } from "react";
-import { db } from "../server/db/db";
-import { account, session, user, verification } from "../server/db/schema";
 
 export const auth = betterAuth({
   session: {

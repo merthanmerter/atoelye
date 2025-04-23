@@ -1,9 +1,7 @@
 import Footer from "@/components/footer";
 import Navigation from "@/components/navigation";
 import Providers from "@/components/providers";
-import { Toaster } from "@/components/ui/sonner";
 import { routing } from "@/i18n/routing";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -63,8 +61,6 @@ export default async function RootLayout({ children, params }: Props) {
                 {children}
               </main>
               <Footer locale={locale} />
-              <SpeedInsights />
-              <Toaster />
             </Providers>
           </NextIntlClientProvider>
         </body>

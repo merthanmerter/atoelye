@@ -1,6 +1,6 @@
 import { getServerSession } from "@/lib/auth";
 import { s3 } from "@/lib/s3";
-import { db } from "@/server/db/db";
+import { db } from "@/server/db";
 import { user } from "@/server/db/schema";
 import { GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
@@ -80,8 +80,6 @@ export async function GET() {
 
     // Generate a presigned URL that expires in 1 hour (3600 seconds)
     const presignedUrl = await getSignedUrl(s3, command, { expiresIn: 3600 });
-
-    console.log(presignedUrl);
 
     return Response.json({
       url: presignedUrl,

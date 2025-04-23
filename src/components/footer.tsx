@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import NextLink from "next/link";
+import FooterNewsletter from "./footer-newsletter";
 import GitHubIcon from "./github-icon";
 import InstagramIcon from "./instagram-icon";
 import TwitterIcon from "./twitter-icon";
 export default async function Footer({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "Layout" });
   return (
-    <footer className='border-t border-border/30 bg-card/20 backdrop-blur-sm mt-auto'>
+    <footer className='border-t border-border/30 bg-border/20 backdrop-blur-sm mt-auto'>
       <div className='max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 py-9'>
         {/* Brand Section */}
         <div className='flex flex-col'>
@@ -76,25 +76,7 @@ export default async function Footer({ locale }: { locale: string }) {
             </div>
           </div>
         </div>
-
-        {/* Newsletter Section */}
-        <div className='ml-auto'>
-          <h3 className='font-medium text-sm mb-3'>{t("newsletter")}</h3>
-          <form className='relative max-w-80'>
-            <input
-              type='email'
-              placeholder={t("emailPlaceholder")}
-              className='h-9 w-full px-3 pr-24 rounded-md bg-background border border-border text-sm'
-            />
-            <Button
-              size='sm'
-              type='submit'
-              variant='outline'
-              className='absolute right-1 top-1 bottom-1 text-xs h-7 rounded-sm'>
-              {t("subscribe")}
-            </Button>
-          </form>
-        </div>
+        <FooterNewsletter />
       </div>
     </footer>
   );

@@ -11,16 +11,16 @@
     "footerTagline": "Craftsmanship evolved.",
     "home": "Anasayfa",
     "legal": "Yasal",
-    "navigation": "Gezinme",
+    "navigation": "Navigasyon",
     "newsletter": "Bülten",
     "privacy": "Gizlilik Politikası",
     "subscribe": "Abone Ol",
+    "subscribeErrorDuplicate": "Bültene zaten abone oldunuz",
+    "subscribeErrorUnknown": "Bültene abone olma hatası",
+    "subscribeSuccess": "Bültene abone oldunuz",
     "terms": "Kullanım Şartları",
     "test": "Deneme",
     "title": "atølye"
-  },
-  "LocaleSwitcher": {
-    "flag": "🇹🇷"
   },
   "TestPage": {
     "description": "<p>Sayfa yol adları da uluslararasılaştırılmıştır.</p><p>Varsayılan dil olan İngilizce'yi kullanıyorsanız, bu sayfada tarayıcı adres çubuğunda <code>/en/test</code> göreceksiniz.</p><p>Dili Türkçe'ye değiştirirseniz, URL buna göre yerelleştirilir (<code>/tr/deneme</code>).</p>",

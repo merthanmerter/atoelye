@@ -1,8 +1,8 @@
 "use server";
 
+import { db } from "@/server/db";
+import { user } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
-import { db } from "../db/db";
-import { user } from "../db/schema";
 
 export const getUserById = async (id?: string) => {
   if (!id) {

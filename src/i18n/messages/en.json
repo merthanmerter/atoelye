@@ -15,12 +15,12 @@
     "newsletter": "Newsletter",
     "privacy": "Privacy Policy",
     "subscribe": "Subscribe",
+    "subscribeErrorDuplicate": "You are already subscribed to the newsletter",
+    "subscribeErrorUnknown": "Failed to subscribe to the newsletter",
+    "subscribeSuccess": "Thank you for subscribing to the newsletter",
     "terms": "Terms of Service",
     "test": "Test",
     "title": "atølye"
-  },
-  "LocaleSwitcher": {
-    "flag": "🇬🇧"
   },
   "TestPage": {
     "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/test</code> in the browser address bar on this page.</p><p>If you change the locale to Turkish, the URL is localized accordingly (<code>/tr/deneme</code>).</p>",

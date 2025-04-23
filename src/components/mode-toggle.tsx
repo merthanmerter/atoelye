@@ -14,6 +14,12 @@ import {
 export function ModeToggle() {
   const { setTheme } = useTheme();
 
+  // React.useEffect(() => {
+  //   const hour = new Date().getHours();
+  //   const isNightTime = hour >= 20 || hour < 6; // 8 PM to 6 AM
+  //   setTheme(!isNightTime ? "dark" : "light");
+  // }, [setTheme]);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
