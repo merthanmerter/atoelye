@@ -2,8 +2,8 @@ import LocaleToggle from "@/components/locale-toggle";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
 
 export default async function Navigation({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "Layout" });

@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
+import NextLink from "next/link";
 import GitHubIcon from "./github-icon";
 import InstagramIcon from "./instagram-icon";
 import TwitterIcon from "./twitter-icon";
-
 export default async function Footer({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "Layout" });
   return (
@@ -19,27 +19,27 @@ export default async function Footer({ locale }: { locale: string }) {
             {t("footerTagline")}
           </p>
           <div className='flex items-center gap-3 text-muted-foreground'>
-            <Link
+            <NextLink
               href='https://www.instagram.com/atoelye'
               target='_blank'
               rel='noopener noreferrer'
               className='hover:text-foreground transition-colors'>
               <InstagramIcon className='size-5' />
-            </Link>
-            <Link
+            </NextLink>
+            <NextLink
               href='https://x.com/atoelye'
               target='_blank'
               rel='noopener noreferrer'
               className='hover:text-foreground transition-colors'>
               <TwitterIcon className='size-5' />
-            </Link>
-            <Link
+            </NextLink>
+            <NextLink
               href='https://github.com/atoelye'
               target='_blank'
               rel='noopener noreferrer'
               className='hover:text-foreground transition-colors'>
               <GitHubIcon className='size-5' />
-            </Link>
+            </NextLink>
           </div>
         </div>
 
@@ -63,16 +63,16 @@ export default async function Footer({ locale }: { locale: string }) {
           <div>
             <h3 className='font-medium text-sm mb-3'>{t("legal")}</h3>
             <div className='flex flex-col gap-2 text-sm text-muted-foreground'>
-              <Link
+              <NextLink
                 href='#'
                 className='hover:text-foreground transition-colors'>
                 {t("privacy")}
-              </Link>
-              <Link
+              </NextLink>
+              <NextLink
                 href='#'
                 className='hover:text-foreground transition-colors'>
                 {t("terms")}
-              </Link>
+              </NextLink>
             </div>
           </div>
         </div>

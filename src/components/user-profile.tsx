@@ -2,13 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { redirect } from "@/i18n/navigation";
+import { Link, redirect } from "@/i18n/navigation";
 import { signOut } from "@/lib/auth-client";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createAuthClient } from "better-auth/react";
 import { Loader2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Avatar, AvatarImage } from "./ui/avatar";

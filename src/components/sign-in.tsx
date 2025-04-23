@@ -12,13 +12,13 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Link } from "@/i18n/navigation";
 import { signIn } from "@/lib/auth-client";
 import { Loader2 } from "lucide-react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,11 +54,11 @@ export default function SignIn() {
             <div className='grid gap-2'>
               <div className='flex items-center'>
                 <Label htmlFor='password'>Password</Label>
-                <Link
-                  href='#'
+                <NextLink
+                  href='/forgot-password'
                   className='ml-auto inline-block text-sm underline'>
                   Forgot your password?
-                </Link>
+                </NextLink>
               </div>
 
               <Input
