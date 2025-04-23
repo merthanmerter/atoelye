@@ -2,7 +2,7 @@ import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
 
-export const avatarRouter = new Hono().post(
+export const avatarRouter = new Hono().put(
   "/",
   zValidator(
     "form",
@@ -12,9 +12,17 @@ export const avatarRouter = new Hono().post(
   ),
   (c) => {
     const { file } = c.req.valid("form");
+    console.log(file);
     // to be implemented
-    return c.json({
-      message: `${file}`,
-    });
+    return c.json({});
   },
 );
+
+// client example
+// const res = await client.user.picture.$put({
+//   form: {
+//     file: new File([fileToUpload], filename, {
+//       type: fileToUpload.type,
+//     }),
+//   },
+// })
