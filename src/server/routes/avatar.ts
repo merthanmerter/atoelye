@@ -7,7 +7,6 @@ import { GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { zValidator } from "@hono/zod-validator";
 import { eq } from "drizzle-orm";
-import sharp from "sharp";
 import { z } from "zod";
 
 export const avatarRouter = honoRouter()
@@ -36,24 +35,16 @@ export const avatarRouter = honoRouter()
         }
 
         const buffer = await file.arrayBuffer();
-        const image = sharp(buffer);
-        const resizedImage = image.resize({
-          width: 150,
-          height: 150,
-          fit: "cover",
-        });
-        const webpImage = resizedImage.toFormat("webp");
-        const resizedImageBuffer = await webpImage.toBuffer();
 
         const command = new PutObjectCommand({
           Bucket: process.env.R2_BUCKET_NAME,
           Key: imageKey,
-          Body: Buffer.from(resizedImageBuffer),
+          Body: Buffer.from(buffer),
           ContentType: file.type,
         });
 
         const result = await s3.send(command);
-        const url = `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com/atoelye/${imageKey}`;
+        const url = `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com/${process.env.R2_BUCKET_NAME}/${imageKey}`;
 
         await db
           .update(user)
@@ -70,6 +61,7 @@ export const avatarRouter = honoRouter()
           message: "Image uploaded successfully",
         });
       } catch (error) {
+        console.log(error);
         return c.json(
           {
             error: error instanceof Error ? error.message : "Unknown error",

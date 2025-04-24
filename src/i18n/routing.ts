@@ -15,5 +15,8 @@ export const routing = defineRouting({
     "/register": {
       tr: "/kayit",
     },
+    "/email": {
+      tr: "/email",
+    },
   },
 });

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link, redirect } from "@/i18n/navigation";
 import { signOut } from "@/lib/auth-client";
+import { resizeImage } from "@/lib/resize-image";
 import { rpc } from "@/lib/rpc";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createAuthClient } from "better-auth/react";
@@ -56,23 +57,29 @@ export default function UserProfile() {
     }
   };
 
-  const { mutate: uploadImageToCloudflareR2 } = useMutation({
-    mutationFn: async () => {
-      if (!file) return;
-      const res = await rpc.api.avatar.$post({
-        form: { file },
-      });
-      if (res.ok) return await res.json();
-      return null;
-    },
-    onSuccess: async (data) => {
-      toast.success(data?.message);
-      queryClient.invalidateQueries({ queryKey: ["avatar"] });
-    },
-    onError: (error) => {
-      toast.error(error.message);
-    },
-  });
+  const { mutate: uploadImageToCloudflareR2, isPending: isUploading } =
+    useMutation({
+      mutationFn: async () => {
+        if (!file) return;
+        const res = await rpc.api.avatar.$post({
+          form: {
+            file: await resizeImage(file, {
+              maxHeight: 150,
+              maxWidth: 150,
+            }),
+          },
+        });
+        if (res.ok) return await res.json();
+        return null;
+      },
+      onSuccess: async (data) => {
+        toast.success(data?.message);
+        queryClient.invalidateQueries({ queryKey: ["avatar"] });
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
+    });
 
   const handleSignOut = async () => {
     setAuthenticating(true);
@@ -141,8 +148,13 @@ export default function UserProfile() {
               <Button
                 size='icon'
                 variant='default'
-                className='absolute top-1 right-1 size-7 z-10'>
-                <Upload />
+                className='absolute top-1 right-1 size-7 z-10'
+                disabled={isUploading}>
+                {isUploading ? (
+                  <Loader2 className='animate-spin' />
+                ) : (
+                  <Upload />
+                )}
               </Button>
             </form>
           </>
