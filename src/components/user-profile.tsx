@@ -87,6 +87,9 @@ export default function UserProfile() {
           redirect({ href: "/login", locale });
           toast.success("Signed out successfully");
           queryClient.clear();
+          queryClient.invalidateQueries();
+          queryClient.removeQueries();
+          queryClient.resetQueries();
         },
       },
     });
