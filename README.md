@@ -1,25 +1,29 @@
 # Atoelye
 
-<div align="center">
-  <img src="public/next.svg" alt="Next.js" height="60" />
-  <img src="https://raw.githubusercontent.com/neondatabase/website/main/public/logomark.svg" alt="Neon" height="60" />
-  <img src="https://orm.drizzle.team/img/drizzle-logo.svg" alt="Drizzle ORM" height="60" />
-  <img src="https://ui.shadcn.com/favicon.ico" alt="shadcn/ui" height="60" />
-  <img src="https://www.better-auth.com/better-auth.svg" alt="Better Auth" height="60" />
-  <img src="https://next-intl-docs.vercel.app/logo.svg" alt="next-intl" height="60" />
-  <img src="https://hono.dev/favicon.png" alt="Hono" height="60" />
+<div style="display: flex; gap: 0.5rem; align-items: center;">
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/14985020?s=60&v=4" alt="Vercel" width="60" />
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/126103961?s=60&v=4" alt="Next.js" width="60" />
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/77690634?s=60&v=4" alt="Neon" width="60" />
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/108468352?s=60&v=4" alt="Drizzle ORM" width="60" />
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/98495527?s=60&v=4" alt="Hono" width="60" />
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/163827765?s=60&v=4" alt="Better Auth" width="60" />
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/198240494?s=60&v=4" alt="Better Auth" width="60" />
+  <img style="background-color: black; border-radius: 10%;" src="https://avatars.githubusercontent.com/u/139895814?s=60&v=4" alt="shadcn/ui" width="60" />
+  
 </div>
 
 ## Tech Stack
 
+- **[Vercel](https://vercel.com/)** - The platform for serverless functions and
+  static sites
 - **[Next.js](https://nextjs.org/)** - The React framework for production
 - **[Neon](https://neon.tech/)** - Serverless Postgres database
 - **[Drizzle ORM](https://orm.drizzle.team/)** - TypeScript ORM for SQL
   databases
-- **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful, accessible UI components
+- **[Hono](https://hono.dev/)** - Ultrafast web framework for the Edges
 - **[Better Auth](https://www.better-auth.com/)** - Authentication for Next.js
 - **[next-intl](https://next-intl.dev/)** - Internationalization for Next.js
-- **[Hono](https://hono.dev/)** - Ultrafast web framework for the Edges
+- **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful, accessible UI components
 
 ## Getting Started
 
