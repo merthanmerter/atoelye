@@ -4,14 +4,14 @@ import SendTestEmail from "@/components/send-test-email";
 import { getQueryClient } from "@/lib/query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getTranslations } from "next-intl/server";
-import { action as queryFn } from "./action";
+import { sayHello } from "./action";
 
 export default async function Page() {
   const t = await getTranslations("TestPage");
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["rpcResponseSSR"],
-    queryFn: () => queryFn("ssr"),
+    queryFn: () => sayHello("from hono ssr!"),
   });
 
   return (

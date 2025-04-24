@@ -2,10 +2,19 @@
 import { rpc } from "@/lib/rpc";
 import { headers } from "next/headers";
 
-export const action = async (template: string) => {
+export const sayHello = async (message: string) => {
   const res = await rpc.api.hello.$get(
-    { query: { message: `from hono ${template}!` } },
-    { init: { credentials: "include", headers: await headers() } },
+    {
+      query: {
+        message,
+      },
+    },
+    {
+      init: {
+        credentials: "include",
+        headers: new Headers(await headers()),
+      },
+    },
   );
-  return res.json();
+  return await res.json();
 };

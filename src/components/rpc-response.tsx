@@ -1,6 +1,6 @@
 "use client";
 
-import { action as queryFn } from "@/app/[locale]/test/action";
+import { sayHello } from "@/app/[locale]/test/action";
 import { useQuery } from "@tanstack/react-query";
 
 export default function RpcResponse({
@@ -13,7 +13,7 @@ export default function RpcResponse({
   const { data, isLoading } = useQuery({
     initialData,
     queryKey,
-    queryFn: () => queryFn("csr"),
+    queryFn: () => sayHello("from hono csr!"),
   });
 
   return (
