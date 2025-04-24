@@ -3,6 +3,7 @@ import RpcResponse from "@/components/rpc-response";
 import SendTestEmail from "@/components/send-test-email";
 import { getRpcClient } from "@/lib/rpc";
 import { getTranslations } from "next-intl/server";
+import "server-only";
 // import { getQueryClient } from "@/lib/query-client";
 // import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
