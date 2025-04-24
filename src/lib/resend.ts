@@ -1,13 +1,3 @@
-/**
- * @description Send an email using Resend.
- * We use fetch method to be able to use edge runtime.
- * @param {Object} params
- * @param {string} params.from
- * @param {string[]} params.to
- * @param {string} params.subject
- * @param {string} params.html
- * @returns {Promise<Object>}
- */
 export const resend = async ({
   from,
   to,

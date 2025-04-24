@@ -12,6 +12,4 @@ https://next-intl.dev/
 
 https://github.com/amannn/next-intl/tree/main/examples/example-app-router
 
-https://bprogress.vercel.app/
-
 https://hono.dev/docs/guides/rpc
