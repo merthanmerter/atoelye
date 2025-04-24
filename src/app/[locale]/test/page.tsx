@@ -2,16 +2,41 @@ import RefetchHello from "@/components/refetch-hello";
 import RpcResponse from "@/components/rpc-response";
 import SendTestEmail from "@/components/send-test-email";
 import { getQueryClient } from "@/lib/query-client";
+import { rpc } from "@/lib/rpc";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { getTranslations } from "next-intl/server";
-import { sayHello } from "./action";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { headers } from "next/headers";
 
-export default async function Page() {
+// export const dynamic = "force-static";
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const t = await getTranslations("TestPage");
+  const { locale } = await params;
+  setRequestLocale(locale);
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["rpcResponseSSR"],
-    queryFn: () => sayHello("from hono ssr!"),
+    queryFn: async () =>
+      rpc.api.hello
+        .$get(
+          {
+            query: {
+              message:
+                "from hono <span style='color: coral; font-weight: bold;'>SSR!</span>",
+            },
+          },
+          {
+            init: {
+              credentials: "include",
+              headers: new Headers(await headers()),
+            },
+          },
+        )
+        .then((res) => res.text()),
   });
 
   return (

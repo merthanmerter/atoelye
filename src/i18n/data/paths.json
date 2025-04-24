@@ -1,0 +1,15 @@
+{
+  "/": "/",
+  "/email": {
+    "tr": "/email"
+  },
+  "/login": {
+    "tr": "/giris"
+  },
+  "/register": {
+    "tr": "/kayit"
+  },
+  "/test": {
+    "tr": "/deneme"
+  }
+}
