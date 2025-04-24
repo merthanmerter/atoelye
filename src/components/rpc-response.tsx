@@ -3,8 +3,15 @@
 import { getRpcClient } from "@/lib/rpc";
 import { useQuery } from "@tanstack/react-query";
 
-export default function RpcResponse({ queryKey }: { queryKey: [string] }) {
+export default function RpcResponse({
+  queryKey,
+  initialData,
+}: {
+  queryKey: [string];
+  initialData?: { message: string };
+}) {
   const { data, isLoading } = useQuery({
+    initialData,
     queryKey,
     queryFn: async () => {
       const rpc = await getRpcClient();
