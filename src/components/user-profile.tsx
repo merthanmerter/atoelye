@@ -76,7 +76,7 @@ export default function UserProfile() {
 
   const handleSignOut = async () => {
     setAuthenticating(true);
-
+    queryClient.resetQueries();
     await signOut({
       fetchOptions: {
         credentials: "include",
@@ -86,10 +86,6 @@ export default function UserProfile() {
         onSuccess: () => {
           redirect({ href: "/login", locale });
           toast.success("Signed out successfully");
-          queryClient.clear();
-          queryClient.invalidateQueries();
-          queryClient.removeQueries();
-          queryClient.resetQueries();
         },
       },
     });
