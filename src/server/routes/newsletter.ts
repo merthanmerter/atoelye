@@ -1,16 +1,15 @@
 // app/api/do-something/route.ts
+import { honoRouter } from "@/lib/hono";
 import { db } from "@/server/db";
 import { newsletter } from "@/server/db/schema";
 import { zValidator } from "@hono/zod-validator";
-import { Hono } from "hono";
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
-export const newsletterRouter = new Hono().post(
+export const newsletterRouter = honoRouter().post(
   "/",
   zValidator("form", z.object({ email: z.string().email() })),
   async (c) => {
-    console.log("newsletter");
     const { email } = c.req.valid("form");
     const t = await getTranslations("Layout");
     try {

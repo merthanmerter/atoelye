@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "@/lib/auth-client";
-import { rpc } from "@/lib/rpc";
+import { getRpcClient } from "@/lib/rpc";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2, MailIcon } from "lucide-react";
 import { toast } from "sonner";
@@ -11,6 +11,7 @@ export default function SendTestEmail() {
   const send = useMutation({
     mutationFn: async () => {
       if (!session) return null;
+      const rpc = await getRpcClient();
       const res = await rpc.api.send.$post({
         json: {
           email: session.user.email,
@@ -31,6 +32,7 @@ export default function SendTestEmail() {
     <Button
       disabled={send.isPending}
       size='sm'
+      variant='outline'
       className='text-xs'
       onClick={() => send.mutate()}>
       {send.isPending ? (

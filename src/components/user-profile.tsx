@@ -4,24 +4,40 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link, redirect } from "@/i18n/navigation";
 import { signOut } from "@/lib/auth-client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { getRpcClient } from "@/lib/rpc";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createAuthClient } from "better-auth/react";
-import { Loader2 } from "lucide-react";
+import { Loader2, Upload } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Card, CardContent, CardFooter } from "./ui/card";
+import { Input } from "./ui/input";
 
 const { useSession } = createAuthClient();
 
 export default function UserProfile() {
-  const { data: session, isPending, error } = useSession();
-  const [loading, setLoading] = useState(false);
+  const { data: session, isPending: isSessionPending, error } = useSession();
   const t = useTranslations("HomePage");
   const locale = useLocale();
-
+  const queryClient = useQueryClient();
+  const [isAuthenticating, setAuthenticating] = useState(false);
   const [file, setFile] = useState<File | null>(null);
+
+  const { data: avatarData, isFetching: isAvatarLoading } = useQuery({
+    queryKey: ["avatar"],
+    queryFn: async ({ signal }) => {
+      if (!session || isAuthenticating || !session.user.image) {
+        return null;
+      }
+      const rpc = await getRpcClient();
+      const res = await rpc.api.avatar.$get({ signal });
+      if (res.ok) return await res.json();
+      return null;
+    },
+    enabled: !!session?.user.image,
+  });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -44,41 +60,49 @@ export default function UserProfile() {
   const { mutate: uploadImageToCloudflareR2 } = useMutation({
     mutationFn: async () => {
       if (!file) return;
-      const formData = new FormData();
-      formData.append("file", file);
-      const response = await fetch("/api/avatar", {
-        method: "POST",
-        body: formData,
+      const rpc = await getRpcClient();
+      const res = await rpc.api.avatar.$post({
+        form: { file },
       });
-      const data = await response.json();
-      return data.url;
+      if (res.ok) return await res.json();
+      return null;
     },
     onSuccess: async (data) => {
-      toast.success(data);
+      toast.success(data?.message);
+      queryClient.invalidateQueries({ queryKey: ["avatar"] });
     },
     onError: (error) => {
       toast.error(error.message);
     },
   });
 
-  const { data: avatarImage } = useQuery({
-    queryKey: ["image"],
-    queryFn: async () => {
-      const response = await fetch(`/api/avatar`);
-      const data = await response.json();
-      return data.url;
-    },
-    enabled: !!session,
-  });
+  const handleSignOut = async () => {
+    setAuthenticating(true);
+
+    await signOut({
+      fetchOptions: {
+        credentials: "include",
+        onResponse: () => {
+          setAuthenticating(false);
+        },
+        onSuccess: () => {
+          redirect({ href: "/login", locale });
+          toast.success("Signed out successfully");
+          queryClient.clear();
+        },
+      },
+    });
+  };
 
   return (
-    <Card className='mx-auto'>
+    <Card className='mx-auto min-w-xs'>
       <CardContent className='grid place-items-center gap-2'>
-        {isPending ? (
+        {isSessionPending ? (
           <>
             <Skeleton className='w-24 h-24 rounded-full' />
-            <Skeleton className='w-36 h-4' />
-            <Skeleton className='w-36 h-4' />
+            <Skeleton className='w-42 h-3.5' />
+            <Skeleton className='w-36 h-3.5' />
+            <Skeleton className='w-60 h-9 mt-3' />
           </>
         ) : error || !session ? (
           <p className='text-sm leading-none text-muted-foreground'>
@@ -86,36 +110,44 @@ export default function UserProfile() {
           </p>
         ) : (
           <>
-            {session?.user?.image ? (
-              <Avatar className='size-16 border-2'>
-                <AvatarImage
-                  src={avatarImage}
-                  alt='Avatar'
-                  width={150}
-                  height={150}
-                />
-              </Avatar>
+            {isAvatarLoading ? (
+              <Skeleton className='w-24 h-24 rounded-full' />
             ) : (
-              <form
-                className='w-24 h-24 rounded-full bg-muted flex items-center justify-center'
-                onSubmit={handleSubmit}>
-                <label htmlFor='file'>
-                  <input
-                    accept='image/*'
-                    type='file'
-                    name='file'
-                    onChange={handleFileChange}
+              session?.user.image &&
+              avatarData?.url && (
+                <Avatar className='size-24 border-2'>
+                  <AvatarImage
+                    src={avatarData?.url}
+                    alt='Avatar'
+                    width={150}
+                    height={150}
                   />
-                  <Button>Upload</Button>
-                </label>
-              </form>
+                </Avatar>
+              )
             )}
+
             <p className='text-sm leading-none font-bold'>
               {session?.user?.name}
             </p>
             <p className='text-sm leading-none text-muted-foreground'>
               {session?.user?.email}
             </p>
+            <form
+              className='relative max-w-60 mt-3'
+              onSubmit={handleSubmit}>
+              <Input
+                accept='image/*'
+                type='file'
+                name='file'
+                onChange={handleFileChange}
+              />
+              <Button
+                size='icon'
+                variant='default'
+                className='absolute top-1 right-1 size-7 z-10'>
+                <Upload />
+              </Button>
+            </form>
           </>
         )}
       </CardContent>
@@ -123,26 +155,10 @@ export default function UserProfile() {
       <CardFooter className='mx-auto'>
         {session ? (
           <Button
-            disabled={loading}
+            disabled={isAuthenticating}
             className='min-w-28'
-            onClick={async () =>
-              await signOut({
-                fetchOptions: {
-                  credentials: "include",
-                  onRequest: () => {
-                    setLoading(true);
-                  },
-                  onResponse: () => {
-                    setLoading(false);
-                  },
-                  onSuccess: () => {
-                    redirect({ href: "/login", locale });
-                    toast.success("Signed out successfully");
-                  },
-                },
-              })
-            }>
-            {loading ? (
+            onClick={handleSignOut}>
+            {isAuthenticating ? (
               <Loader2
                 size={16}
                 className='animate-spin'
@@ -151,6 +167,8 @@ export default function UserProfile() {
               t("signOut")
             )}
           </Button>
+        ) : isSessionPending ? (
+          <Skeleton className='w-28 h-9' />
         ) : (
           <Button
             className='min-w-28'

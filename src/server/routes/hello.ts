@@ -1,8 +1,8 @@
+import { honoRouter } from "@/lib/hono";
 import { zValidator } from "@hono/zod-validator";
-import { Hono } from "hono";
 import { z } from "zod";
 
-export const helloRouter = new Hono().get(
+export const helloRouter = honoRouter().get(
   "/",
   zValidator(
     "query",
@@ -10,7 +10,7 @@ export const helloRouter = new Hono().get(
       message: z.string(),
     }),
   ),
-  (c) => {
+  async (c) => {
     const { message } = c.req.valid("query");
     return c.json({
       message: `Hello ${message}`,

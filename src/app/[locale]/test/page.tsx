@@ -1,7 +1,8 @@
+import RefetchHello from "@/components/refetch-hello";
 import RpcResponse from "@/components/rpc-response";
 import SendTestEmail from "@/components/send-test-email";
 import { getQueryClient } from "@/lib/query-client";
-import { rpc } from "@/lib/rpc";
+import { getRpcClient } from "@/lib/rpc";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getTranslations } from "next-intl/server";
 
@@ -11,6 +12,7 @@ export default async function Page() {
   await queryClient.prefetchQuery({
     queryKey: ["rpcResponseSSR"],
     queryFn: async () => {
+      const rpc = await getRpcClient();
       const res = await rpc.api.hello.$get({
         query: { message: "from hono ssr!" },
       });
@@ -34,7 +36,10 @@ export default async function Page() {
 
           <RpcResponse queryKey={["rpcResponseSSR"]} />
           <RpcResponse queryKey={["rpcResponseCSR"]} />
-          <SendTestEmail />
+          <div className='flex gap-2 mt-4 justify-center items-center'>
+            <RefetchHello />
+            <SendTestEmail />
+          </div>
         </div>
       </div>
     </HydrationBoundary>

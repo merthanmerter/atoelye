@@ -1,23 +1,7 @@
-import { avatarRouter } from "@/server/routes/avatar";
-import { helloRouter } from "@/server/routes/hello";
-import { newsletterRouter } from "@/server/routes/newsletter";
-import { sendRouter } from "@/server/routes/send";
-import { Hono } from "hono";
+import app from "@/server/routes";
+import { handle } from "hono/vercel";
 
-export const runtime = "edge";
-
-const app = new Hono().basePath("/api");
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const appRouter = app
-  .route("/hello", helloRouter)
-  .route("/send", sendRouter)
-  .route("/newsletter", newsletterRouter)
-  .route("/avatar", avatarRouter);
-
-export type AppRouter = typeof appRouter;
-export const GET = app.fetch;
-export const POST = app.fetch;
-export const PUT = app.fetch;
-export const PATCH = app.fetch;
-export const DELETE = app.fetch;
+export const GET = handle(app);
+export const POST = handle(app);
+export const PUT = handle(app);
+export const DELETE = handle(app);

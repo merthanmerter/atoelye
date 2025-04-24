@@ -1,12 +1,13 @@
 "use client";
 
-import { rpc } from "@/lib/rpc";
+import { getRpcClient } from "@/lib/rpc";
 import { useQuery } from "@tanstack/react-query";
 
 export default function RpcResponse({ queryKey }: { queryKey: [string] }) {
   const { data, isLoading } = useQuery({
     queryKey,
     queryFn: async () => {
+      const rpc = await getRpcClient();
       const res = await rpc.api.hello.$get({
         query: { message: "from hono csr!" },
       });

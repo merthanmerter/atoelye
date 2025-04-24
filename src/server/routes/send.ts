@@ -1,9 +1,9 @@
+import { honoRouter } from "@/lib/hono";
 import { resend } from "@/lib/resend";
 import { zValidator } from "@hono/zod-validator";
-import { Hono } from "hono";
 import { z } from "zod";
 
-export const sendRouter = new Hono().post(
+export const sendRouter = honoRouter().post(
   "/",
   zValidator(
     "json",

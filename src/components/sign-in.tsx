@@ -12,11 +12,11 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { signIn } from "@/lib/auth-client";
+import { useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import NextLink from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 export default function SignIn() {
@@ -25,6 +25,7 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   return (
     <div className='p-20 grid place-items-center'>
@@ -36,12 +37,44 @@ export default function SignIn() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className='grid gap-4'>
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+
+              const formData = new FormData(e.currentTarget);
+              const email = formData.get("email") as string;
+              const password = formData.get("password") as string;
+
+              await signIn.email(
+                {
+                  email,
+                  password,
+                },
+                {
+                  onRequest: () => {
+                    setLoading(true);
+                  },
+                  onResponse: () => {
+                    setLoading(false);
+                  },
+                  onSuccess: async () => {
+                    queryClient.clear();
+                    toast.success("Logged in successfully");
+                    router.push("/");
+                  },
+                  onError: () => {
+                    toast.error("Invalid email or password");
+                  },
+                },
+              );
+            }}
+            className='grid gap-4'>
             <div className='grid gap-2'>
               <Label htmlFor='email'>Email</Label>
               <Input
                 id='email'
                 type='email'
+                name='email'
                 placeholder='m@example.com'
                 required
                 onChange={(e) => {
@@ -64,6 +97,7 @@ export default function SignIn() {
               <Input
                 id='password'
                 type='password'
+                name='password'
                 placeholder='password'
                 autoComplete='password'
                 value={password}
@@ -84,30 +118,7 @@ export default function SignIn() {
             <Button
               type='submit'
               className='w-full'
-              disabled={loading}
-              onClick={async () => {
-                await signIn.email(
-                  {
-                    email,
-                    password,
-                  },
-                  {
-                    onRequest: () => {
-                      setLoading(true);
-                    },
-                    onResponse: () => {
-                      setLoading(false);
-                    },
-                    onSuccess: async () => {
-                      toast.success("Logged in successfully");
-                      router.push("/");
-                    },
-                    onError: () => {
-                      toast.error("Invalid email or password");
-                    },
-                  },
-                );
-              }}>
+              disabled={loading}>
               {loading ? (
                 <Loader2
                   size={16}
@@ -117,7 +128,7 @@ export default function SignIn() {
                 "LogIn"
               )}
             </Button>
-          </div>
+          </form>
         </CardContent>
         <CardFooter className='flex justify-center'>
           <Button variant='link'>

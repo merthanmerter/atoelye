@@ -2,8 +2,7 @@ import { db } from "@/server/db";
 import { account, session, user, verification } from "@/server/db/schema";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { headers } from "next/headers";
-import { cache } from "react";
+import { admin, organization } from "better-auth/plugins";
 
 export const auth = betterAuth({
   session: {
@@ -27,11 +26,12 @@ export const auth = betterAuth({
       console.log(data, request);
     },
   },
+  plugins: [organization(), admin()],
 });
 
-export const getServerSession = cache(async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  return session;
-});
+export type AuthType = {
+  Variables: {
+    user: typeof auth.$Infer.Session.user | null;
+    session: typeof auth.$Infer.Session.session | null;
+  };
+};
