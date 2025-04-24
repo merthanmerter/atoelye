@@ -1,5 +1,3 @@
-import Footer from "@/components/footer";
-import Navigation from "@/components/navigation";
 import Providers from "@/components/providers";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -55,13 +53,7 @@ export default async function RootLayout({ children, params }: Props) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col`}>
           <NextIntlClientProvider>
-            <Providers>
-              <Navigation locale={locale} />
-              <main className='flex flex-col flex-1 px-4 py-3 @container/main'>
-                {children}
-              </main>
-              <Footer locale={locale} />
-            </Providers>
+            <Providers>{children}</Providers>
           </NextIntlClientProvider>
         </body>
       </html>

@@ -55,102 +55,100 @@ export default function SignUp() {
   });
 
   return (
-    <div className='p-20 grid place-items-center'>
-      <Card className='w-full max-w-md'>
-        <CardHeader>
-          <CardTitle className='text-lg md:text-xl'>Sign Up</CardTitle>
-          <CardDescription className='text-xs md:text-sm'>
-            Enter your information to create an account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className='grid gap-4'>
-            <div className='grid grid-cols-2 gap-4'>
-              <div className='grid gap-2'>
-                <Label htmlFor='first-name'>First name</Label>
-                <Input
-                  id='first-name'
-                  placeholder='Max'
-                  required
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }}
-                  value={firstName}
-                />
-              </div>
-              <div className='grid gap-2'>
-                <Label htmlFor='last-name'>Last name</Label>
-                <Input
-                  id='last-name'
-                  placeholder='Robinson'
-                  required
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                  }}
-                  value={lastName}
-                />
-              </div>
-            </div>
+    <Card className='w-full max-w-md'>
+      <CardHeader>
+        <CardTitle className='text-lg md:text-xl'>Sign Up</CardTitle>
+        <CardDescription className='text-xs md:text-sm'>
+          Enter your information to create an account
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className='grid gap-4'>
+          <div className='grid grid-cols-2 gap-4'>
             <div className='grid gap-2'>
-              <Label htmlFor='email'>Email</Label>
+              <Label htmlFor='first-name'>First name</Label>
               <Input
-                id='email'
-                type='email'
-                placeholder='m@example.com'
+                id='first-name'
+                placeholder='Max'
                 required
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setFirstName(e.target.value);
                 }}
-                value={email}
+                value={firstName}
               />
             </div>
             <div className='grid gap-2'>
-              <Label htmlFor='password'>Password</Label>
+              <Label htmlFor='last-name'>Last name</Label>
               <Input
-                id='password'
-                type='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete='new-password'
-                placeholder='Password'
+                id='last-name'
+                placeholder='Robinson'
+                required
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }}
+                value={lastName}
               />
             </div>
-            <div className='grid gap-2'>
-              <Label htmlFor='password'>Confirm Password</Label>
-              <Input
-                id='password_confirmation'
-                type='password'
-                value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
-                autoComplete='new-password'
-                placeholder='Confirm Password'
-              />
-            </div>
-
-            <Button
-              type='submit'
-              className='w-full'
-              disabled={loading}
-              onClick={async () => {
-                handleSignUp.mutate();
-              }}>
-              {loading ? (
-                <Loader2
-                  size={16}
-                  className='animate-spin'
-                />
-              ) : (
-                "Create an account"
-              )}
-            </Button>
           </div>
-        </CardContent>
-        <CardFooter className='flex justify-center'>
-          <Button variant='link'>
-            <Link href='/login'>Already have an account? Sign in</Link>
+          <div className='grid gap-2'>
+            <Label htmlFor='email'>Email</Label>
+            <Input
+              id='email'
+              type='email'
+              placeholder='m@example.com'
+              required
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
+            />
+          </div>
+          <div className='grid gap-2'>
+            <Label htmlFor='password'>Password</Label>
+            <Input
+              id='password'
+              type='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete='new-password'
+              placeholder='Password'
+            />
+          </div>
+          <div className='grid gap-2'>
+            <Label htmlFor='password'>Confirm Password</Label>
+            <Input
+              id='password_confirmation'
+              type='password'
+              value={passwordConfirmation}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              autoComplete='new-password'
+              placeholder='Confirm Password'
+            />
+          </div>
+
+          <Button
+            type='submit'
+            className='w-full'
+            disabled={loading}
+            onClick={async () => {
+              handleSignUp.mutate();
+            }}>
+            {loading ? (
+              <Loader2
+                size={16}
+                className='animate-spin'
+              />
+            ) : (
+              "Create an account"
+            )}
           </Button>
-        </CardFooter>
-      </Card>
-    </div>
+        </div>
+      </CardContent>
+      <CardFooter className='flex justify-center'>
+        <Button variant='link'>
+          <Link href='/login'>Already have an account? Sign in</Link>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

@@ -7,8 +7,6 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { headers } from "next/headers";
 
-// export const dynamic = "force-static";
-
 export default async function Page({
   params,
 }: {

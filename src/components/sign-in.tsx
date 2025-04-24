@@ -28,114 +28,112 @@ export default function SignIn() {
   const queryClient = useQueryClient();
 
   return (
-    <div className='p-20 grid place-items-center'>
-      <Card className='max-w-md w-full'>
-        <CardHeader>
-          <CardTitle className='text-lg md:text-xl'>Sign In</CardTitle>
-          <CardDescription className='text-xs md:text-sm'>
-            Enter your email below to login to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
+    <Card className='max-w-md w-full'>
+      <CardHeader>
+        <CardTitle className='text-lg md:text-xl'>Sign In</CardTitle>
+        <CardDescription className='text-xs md:text-sm'>
+          Enter your email below to login to your account
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
 
-              const formData = new FormData(e.currentTarget);
-              const email = formData.get("email") as string;
-              const password = formData.get("password") as string;
+            const formData = new FormData(e.currentTarget);
+            const email = formData.get("email") as string;
+            const password = formData.get("password") as string;
 
-              await signIn.email(
-                {
-                  email,
-                  password,
+            await signIn.email(
+              {
+                email,
+                password,
+              },
+              {
+                onRequest: () => {
+                  setLoading(true);
                 },
-                {
-                  onRequest: () => {
-                    setLoading(true);
-                  },
-                  onResponse: () => {
-                    setLoading(false);
-                  },
-                  onSuccess: async () => {
-                    queryClient.clear();
-                    toast.success("Logged in successfully");
-                    router.push("/");
-                  },
-                  onError: () => {
-                    toast.error("Invalid email or password");
-                  },
+                onResponse: () => {
+                  setLoading(false);
                 },
-              );
-            }}
-            className='grid gap-4'>
-            <div className='grid gap-2'>
-              <Label htmlFor='email'>Email</Label>
-              <Input
-                id='email'
-                type='email'
-                name='email'
-                placeholder='m@example.com'
-                required
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                value={email}
-              />
+                onSuccess: async () => {
+                  queryClient.clear();
+                  toast.success("Logged in successfully");
+                  router.push("/");
+                },
+                onError: () => {
+                  toast.error("Invalid email or password");
+                },
+              },
+            );
+          }}
+          className='grid gap-4'>
+          <div className='grid gap-2'>
+            <Label htmlFor='email'>Email</Label>
+            <Input
+              id='email'
+              type='email'
+              name='email'
+              placeholder='m@example.com'
+              required
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
+            />
+          </div>
+
+          <div className='grid gap-2'>
+            <div className='flex items-center'>
+              <Label htmlFor='password'>Password</Label>
+              <NextLink
+                href='/forgot-password'
+                className='ml-auto inline-block text-sm underline'>
+                Forgot your password?
+              </NextLink>
             </div>
 
-            <div className='grid gap-2'>
-              <div className='flex items-center'>
-                <Label htmlFor='password'>Password</Label>
-                <NextLink
-                  href='/forgot-password'
-                  className='ml-auto inline-block text-sm underline'>
-                  Forgot your password?
-                </NextLink>
-              </div>
+            <Input
+              id='password'
+              type='password'
+              name='password'
+              placeholder='password'
+              autoComplete='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-              <Input
-                id='password'
-                type='password'
-                name='password'
-                placeholder='password'
-                autoComplete='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+          <div className='flex items-center gap-2'>
+            <Checkbox
+              id='remember'
+              onClick={() => {
+                setRememberMe(!rememberMe);
+              }}
+            />
+            <Label htmlFor='remember'>Remember me</Label>
+          </div>
+
+          <Button
+            type='submit'
+            className='w-full'
+            disabled={loading}>
+            {loading ? (
+              <Loader2
+                size={16}
+                className='animate-spin'
               />
-            </div>
-
-            <div className='flex items-center gap-2'>
-              <Checkbox
-                id='remember'
-                onClick={() => {
-                  setRememberMe(!rememberMe);
-                }}
-              />
-              <Label htmlFor='remember'>Remember me</Label>
-            </div>
-
-            <Button
-              type='submit'
-              className='w-full'
-              disabled={loading}>
-              {loading ? (
-                <Loader2
-                  size={16}
-                  className='animate-spin'
-                />
-              ) : (
-                "LogIn"
-              )}
-            </Button>
-          </form>
-        </CardContent>
-        <CardFooter className='flex justify-center'>
-          <Button variant='link'>
-            <Link href='/register'>Don&apos;t have an account? Sign up</Link>
+            ) : (
+              "LogIn"
+            )}
           </Button>
-        </CardFooter>
-      </Card>
-    </div>
+        </form>
+      </CardContent>
+      <CardFooter className='flex justify-center'>
+        <Button variant='link'>
+          <Link href='/register'>Don&apos;t have an account? Sign up</Link>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
