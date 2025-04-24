@@ -2,30 +2,16 @@ import RefetchHello from "@/components/refetch-hello";
 import RpcResponse from "@/components/rpc-response";
 import SendTestEmail from "@/components/send-test-email";
 import { getQueryClient } from "@/lib/query-client";
-import { rpc } from "@/lib/rpc";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getTranslations } from "next-intl/server";
-import { headers } from "next/headers";
+import { action as queryFn } from "./action";
 
 export default async function Page() {
   const t = await getTranslations("TestPage");
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["rpcResponseSSR"],
-    queryFn: async () => {
-      const res = await rpc.api.hello.$get(
-        {
-          query: { message: "from hono ssr!" },
-        },
-        {
-          init: {
-            credentials: "include",
-            headers: await headers(),
-          },
-        },
-      );
-      return res.json();
-    },
+    queryFn: () => queryFn("ssr"),
   });
 
   return (
