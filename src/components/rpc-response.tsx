@@ -1,8 +1,7 @@
 "use client";
 
-import { getRpcClient } from "@/lib/rpc";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { Suspense } from "react";
+import { rpc } from "@/lib/rpc";
+import { useQuery } from "@tanstack/react-query";
 
 export default function RpcResponse({
   queryKey,
@@ -11,11 +10,10 @@ export default function RpcResponse({
   queryKey: [string];
   initialData?: { message: string };
 }) {
-  const { data } = useSuspenseQuery({
+  const { data, isLoading } = useQuery({
     initialData,
     queryKey,
     queryFn: async () => {
-      const rpc = await getRpcClient();
       const res = await rpc.api.hello.$get({
         query: { message: "from hono csr!" },
       });
@@ -24,10 +22,8 @@ export default function RpcResponse({
   });
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <code className='font-mono block my-3 bg-foreground text-background rounded-md p-2 mx-auto max-w-xs text-xs'>
-        {JSON.stringify(data)}
-      </code>
-    </Suspense>
+    <code className='font-mono block my-3 bg-foreground text-background rounded-md p-2 mx-auto max-w-xs text-xs'>
+      {isLoading ? "Loading..." : JSON.stringify(data)}
+    </code>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { getRpcClient } from "@/lib/rpc";
+import { rpc } from "@/lib/rpc";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -10,7 +10,6 @@ export default function FooterNewsletter() {
   const t = useTranslations("Layout");
   const subscribe = useMutation({
     mutationFn: async (email: string) => {
-      const rpc = await getRpcClient();
       const res = await rpc.api.newsletter.$post({
         form: {
           email,

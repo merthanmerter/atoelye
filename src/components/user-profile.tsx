@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link, redirect } from "@/i18n/navigation";
 import { signOut } from "@/lib/auth-client";
-import { getRpcClient } from "@/lib/rpc";
+import { rpc } from "@/lib/rpc";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createAuthClient } from "better-auth/react";
 import { Loader2, Upload } from "lucide-react";
@@ -31,7 +31,6 @@ export default function UserProfile() {
       if (!session || isAuthenticating || !session.user.image) {
         return null;
       }
-      const rpc = await getRpcClient();
       const res = await rpc.api.avatar.$get({ signal });
       if (res.ok) return await res.json();
       return null;
@@ -60,7 +59,6 @@ export default function UserProfile() {
   const { mutate: uploadImageToCloudflareR2 } = useMutation({
     mutationFn: async () => {
       if (!file) return;
-      const rpc = await getRpcClient();
       const res = await rpc.api.avatar.$post({
         form: { file },
       });
