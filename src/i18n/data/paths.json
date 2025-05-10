@@ -11,5 +11,8 @@
   },
   "/docs": {
     "tr": "/dokumanlar"
+  },
+  "/account": {
+    "tr": "/hesap"
   }
 }

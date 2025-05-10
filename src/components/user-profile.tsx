@@ -99,7 +99,7 @@ export default function UserProfile() {
   };
 
   return (
-    <Card className='mx-auto min-w-xs'>
+    <Card className='mx-auto min-w-xs max-w-md my-12'>
       <CardContent className='grid place-items-center gap-2'>
         {isSessionPending ? (
           <>
