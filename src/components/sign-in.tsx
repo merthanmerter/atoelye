@@ -28,9 +28,11 @@ export default function SignIn() {
   const queryClient = useQueryClient();
 
   return (
-    <Card className='max-w-md w-full'>
+    <Card className='w-full border-none shadow-none bg-transparent max-w-md mx-auto'>
       <CardHeader>
-        <CardTitle className='text-lg md:text-xl'>Sign In</CardTitle>
+        <CardTitle className='text-lg md:text-xl'>
+          <span>Sign In</span>
+        </CardTitle>
         <CardDescription className='text-xs md:text-sm'>
           Enter your email below to login to your account
         </CardDescription>
@@ -74,7 +76,7 @@ export default function SignIn() {
               id='email'
               type='email'
               name='email'
-              placeholder='m@example.com'
+              placeholder='email@example.com'
               required
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -115,8 +117,9 @@ export default function SignIn() {
           </div>
 
           <Button
+            variant='default'
             type='submit'
-            className='w-full'
+            className='w-full bg-blue-500 text-white hover:bg-blue-600'
             disabled={loading}>
             {loading ? (
               <Loader2

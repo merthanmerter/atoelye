@@ -12,7 +12,7 @@ export default async function Page({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const t = await getTranslations("TestPage");
+  const t = await getTranslations("DocsPage");
   const { locale } = await params;
   setRequestLocale(locale);
   const queryClient = getQueryClient();
@@ -39,7 +39,7 @@ export default async function Page({
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div>
+      <div className='py-6 max-w-7xl mx-auto'>
         <h1 className='text-2xl font-bold font-mono text-center mx-auto'>
           {t("title")}
         </h1>

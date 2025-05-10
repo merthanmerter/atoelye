@@ -12,9 +12,7 @@ export default async function Layout({
   return (
     <>
       <Navigation locale={locale} />
-      <main className='flex flex-col flex-1 px-4 py-3 @container/main'>
-        {children}
-      </main>
+      <main className='container px-4 mx-auto max-w-7xl'>{children}</main>
       <Footer locale={locale} />
     </>
   );

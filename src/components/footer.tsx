@@ -9,14 +9,14 @@ export default async function Footer({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "Layout" });
   return (
     <footer className='border-t border-border/30 bg-border/20 backdrop-blur-sm mt-auto'>
-      <div className='max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 py-9'>
+      <div className='@container/footer max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 py-9'>
         {/* Newsletter Section - First on mobile */}
         <div className='md:order-3 flex justify-center md:justify-start'>
           <FooterNewsletter />
         </div>
 
         {/* Links Section */}
-        <div className='grid grid-cols-2 gap-4 md:gap-8 md:order-2 mx-auto md:mx-0'>
+        <div className='grid grid-cols-2 gap-4 md:gap-8 md:order-2 mx-auto d'>
           <div>
             <h3 className='font-medium text-sm mb-3'>{t("navigation")}</h3>
             <div className='flex flex-col gap-2 text-sm text-muted-foreground'>
@@ -26,9 +26,9 @@ export default async function Footer({ locale }: { locale: string }) {
                 {t("home")}
               </Link>
               <Link
-                href='/test'
+                href='/docs'
                 className='hover:text-foreground transition-colors'>
-                {t("test")}
+                {t("docs")}
               </Link>
             </div>
           </div>

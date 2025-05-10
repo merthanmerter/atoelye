@@ -9,7 +9,7 @@
   "/register": {
     "tr": "/kayit"
   },
-  "/test": {
-    "tr": "/deneme"
+  "/docs": {
+    "tr": "/dokumanlar"
   }
 }

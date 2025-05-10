@@ -43,6 +43,7 @@
   --radius-xl: calc(var(--radius) + 4px);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --color-auth-background: oklch(23% 2% 271deg);
 
   @keyframes accordion-down {
     from {
