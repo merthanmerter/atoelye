@@ -14,7 +14,7 @@ export function honoRouter() {
   });
 }
 
-export default function hono() {
+export function hono() {
   const app = honoRouter();
 
   return app;

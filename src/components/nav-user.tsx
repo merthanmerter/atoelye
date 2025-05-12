@@ -1,25 +1,21 @@
 "use client";
 
 import {
-  BadgeCheck,
-  Bell,
-  CreditCard,
   GlobeIcon,
+  LogIn,
   LogOut,
   MonitorIcon,
   MoonIcon,
   SunIcon,
-  UserRound,
+  UserRoundIcon,
 } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuSub,
@@ -29,9 +25,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { signOut, useSession } from "@/lib/auth-client";
-import { rpc } from "@/lib/rpc";
-import { useQuery } from "@tanstack/react-query";
-import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useParams } from "next/navigation";
 import { useTransition } from "react";
@@ -40,34 +33,12 @@ import { Button } from "./ui/button";
 export function NavUser() {
   const { data: session } = useSession();
 
-  const { data: avatarData } = useQuery({
-    queryKey: ["avatar"],
-    queryFn: async ({ signal }) => {
-      if (!session || !session.user.image) {
-        return null;
-      }
-      const res = await rpc.api.avatar.$get({ signal });
-      if (res.ok) return await res.json();
-      return null;
-    },
-    enabled: !!session?.user.image,
-  });
-
   const { theme, setTheme } = useTheme();
 
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const params = useParams();
-  const t = useTranslations("HomePage");
-
-  if (!session) {
-    return (
-      <Button variant='outline'>
-        <Link href='/login'>{t("signIn")}</Link>
-      </Button>
-    );
-  }
 
   return (
     <DropdownMenu>
@@ -76,44 +47,36 @@ export function NavUser() {
           disabled={isPending}
           variant='ghost'
           className='size-8 rounded-full'>
-          <Avatar className='size-8'>
-            <>
-              <AvatarImage
-                src={avatarData?.url}
-                alt={session?.user.name}
-              />
-              <AvatarFallback>
-                <UserRound className='size-4' />
-              </AvatarFallback>
-            </>
-          </Avatar>
+          <UserRoundIcon className='size-8 text-foreground border-5 border-muted rounded-full bg-muted p-0.5' />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className='w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg'
         align='end'
         sideOffset={4}>
-        <DropdownMenuLabel className='p-0 font-normal'>
-          <div className='flex items-center gap-2 px-1 py-1.5 text-left text-sm'>
-            <Avatar className='size-8'>
-              <AvatarImage
-                src={avatarData?.url}
-                alt={session?.user.name}
-              />
-              <AvatarFallback>
-                <UserRound className='size-4' />
-              </AvatarFallback>
-            </Avatar>
+        {session && (
+          <>
+            <DropdownMenuItem
+              className='p-0 font-normal'
+              asChild>
+              <Link href='/account'>
+                <div className='flex items-center gap-2 px-1 py-1.5 text-left text-sm'>
+                  <UserRoundIcon className='size-8 text-foreground border-5 border-muted rounded-full bg-muted p-0.5' />
 
-            <div className='grid flex-1 text-left text-sm leading-tight'>
-              <span className='truncate font-semibold'>
-                {session?.user.name}
-              </span>
-              <span className='truncate text-xs'>{session?.user.email}</span>
-            </div>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
+                  <div className='grid flex-1 text-left text-sm leading-tight'>
+                    <span className='truncate font-semibold'>
+                      {session?.user.name}
+                    </span>
+                    <span className='truncate text-xs'>
+                      {session?.user.email}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </>
+        )}
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className='gap-2'>
@@ -185,35 +148,28 @@ export function NavUser() {
             </DropdownMenuPortal>
           </DropdownMenuSub>
         </DropdownMenuGroup>
+
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
+        {session ? (
+          <DropdownMenuItem
+            onClick={async () => {
+              await signOut({
+                fetchOptions: {
+                  credentials: "include",
+                },
+              });
+            }}>
+            <LogOut />
+            Log out
+          </DropdownMenuItem>
+        ) : (
           <DropdownMenuItem asChild>
-            <Link href='/account'>
-              <BadgeCheck />
-              Account
+            <Link href='/login'>
+              <LogIn />
+              Log in
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <CreditCard />
-            Billing
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Bell />
-            Notifications
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={async () => {
-            await signOut({
-              fetchOptions: {
-                credentials: "include",
-              },
-            });
-          }}>
-          <LogOut />
-          Log out
-        </DropdownMenuItem>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

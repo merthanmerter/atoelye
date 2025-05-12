@@ -1,7 +1,6 @@
-import hono from "@/lib/hono";
+import { hono } from "@/lib/hono";
 import sessionMiddleware from "../middlewares/session";
 import { authController } from "./auth";
-import { avatarRouter } from "./avatar";
 import { helloRouter } from "./hello";
 import { newsletterRouter } from "./newsletter";
 import { sendRouter } from "./send";
@@ -11,8 +10,7 @@ const app = hono().basePath("/api");
 const publicRoutes = hono()
   .route("/auth", authController)
   .route("/send", sendRouter)
-  .route("/newsletter", newsletterRouter)
-  .route("/avatar", avatarRouter);
+  .route("/newsletter", newsletterRouter);
 
 const privateRoutes = hono()
   .use(sessionMiddleware)
