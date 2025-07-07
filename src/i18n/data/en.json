@@ -1,14 +1,151 @@
 {
   "HomePage": {
-    "description": "atoelye.com",
-    "notLoggedIn": "You are not logged in",
     "signIn": "Sign in",
-    "signOut": "Sign out",
-    "title": "atølye"
+    "title": "Your Partner in Aluminium Extrusion",
+    "description": "Leading solutions in aluminum extrusion technology, equipment, and consultation services for over 20 years.",
+    "contactUs": "Contact us",
+    "exploreServices": "Explore our services",
+    "chart": {
+      "title": "Our system works because it focuses on people. We help companies change their culture so that everyone can solve problems quickly and make equipment work better.",
+      "subtitle": "Inalcom helps make these changes permanent and helps businesses reach their full potential."
+    },
+    "aboutUs": {
+      "point1": "20+ years of experience in aluminum extrusion industry",
+      "point2": "Deep knowledge of European and global markets",
+      "point3": "Expertise in European standards and regulations",
+      "point4": "Comprehensive training programs for industry professionals",
+      "point5": "Marketing development and business growth strategies",
+      "point6": "Global standards administration and compliance"
+    },
+    "services": {
+      "title": "Services",
+      "categories": [
+        {
+          "title": "TRAINING",
+          "description": "We have a powerful training system for aluminum extrusion processes. Our system eliminates all operator doubts. It's visual, practical, and functional. We offer special training for managers."
+        },
+        {
+          "title": "IMPROVE KPI (KEY PERFORMANCE INDICATORS)",
+          "description": "In collaboration with our customers, we define programs capable of improving productivity, reducing scrap, costs, and waste."
+        },
+        {
+          "title": "TPM, TOYOTA TOOLS",
+          "description": "We have extensive experience installing TPM methods in extrusion lines. It is also possible to implement many different tools of the Toyota System, all developed for extrusion lines."
+        },
+        {
+          "title": "DIE SHOP",
+          "description": "We have people capable of solving all problems related to dies. We cooperate with the best die makers. We develop dies for our customers. We have a system to reduce knock-off dies."
+        },
+        {
+          "title": "MAINTENANCE",
+          "description": "With our help, it is possible to find solutions for your process with minimum investment. We develop preventive maintenance programs based on the experience of market leaders, sharing knowledge with our customers."
+        },
+        {
+          "title": "DEVELOP PRODUCTS",
+          "description": "We have the knowledge to develop new products. We are capable of making drawings of profiles, etc. It is possible for us to help the customer find the best extruder for the product."
+        }
+      ]
+    },
+    "products": {
+      "title": "Products"
+    },
+    "solutions": {
+      "title": "Optical Measuring Solutions",
+      "description": "We provide comprehensive solutions and training for advanced optical measuring devices in aluminum extrusion quality control.",
+      "capabilities": [
+        "Equipment selection and procurement",
+        "Installation and setup guidance",
+        "Comprehensive operator training",
+        "Process optimization consulting"
+      ]
+    },
+    "contact": {
+      "getInTouch": "Get in Touch",
+      "contactUsDescription": "Ready to optimize your manufacturing processes? Contact us today to discuss your specific needs and learn how our expertise can help drive your business forward."
+    },
+    "partners": {
+      "title": "Our Partners",
+      "description": "We work with leading companies in the aluminum extrusion industry",
+      "companies": [
+        {
+          "name": "Altea",
+          "logo": "altea-logo.webp",
+          "description": "Billet dry lubrication system, the best."
+        },
+        {
+          "name": "Alumat",
+          "logo": "alumat-logo.webp",
+          "description": "Group Almax-Alumat is one of the best DIE Manufacturers in the world",
+          "url": "https://alumat.it"
+        },
+        {
+          "name": "Damatool",
+          "logo": "damatool-logo.webp",
+          "description": "Tooling, Dieshop machines and much more",
+          "url": "https://damatool.com"
+        },
+        {
+          "name": "Extsup",
+          "logo": "extsup-logo.webp",
+          "description": "Second Hand Equipments",
+          "url": "https://extrusionsupplies.com"
+        },
+        {
+          "name": "Jaza",
+          "logo": "jaza-logo.webp",
+          "description": "Spares for aluminium extrusion business and more",
+          "url": "https://jazaco.com"
+        },
+        {
+          "name": "LRH",
+          "logo": "lrh-logo.webp",
+          "description": "Project Management"
+        },
+        {
+          "name": "Nitrex",
+          "logo": "nitrex-logo.webp",
+          "description": "Best Company in Nitriding Processes",
+          "url": "https://nitrex.com"
+        },
+        {
+          "name": "Oddometal",
+          "logo": "oddometal-logo.webp",
+          "description": "Manufacturer of aluminium extrusion",
+          "url": "https://oddometal.com"
+        },
+        {
+          "name": "Pixera",
+          "logo": "pixera-logo.webp",
+          "description": "Scanners for Measuring Profiles",
+          "url": "https://pixera.com.tr"
+        },
+        {
+          "name": "Surtech",
+          "logo": "surtech-logo.webp",
+          "description": "Anodizing and Powder Coating Manufacturer"
+        },
+        {
+          "name": "Thermika",
+          "logo": "thermika-logo.webp",
+          "description": "Die Ovens",
+          "url": "https://thermikasystems.com"
+        },
+        {
+          "name": "VK",
+          "logo": "vk-logo.webp",
+          "description": "Operational excellence through integrated business solutions.",
+          "url": "https://verkron.com"
+        }
+      ]
+    }
   },
   "Layout": {
+    "meta": {
+      "title": "Inalcom - Your Partner in Aluminium Extrusion",
+      "description": "Inalcom provides comprehensive consulting and training services for the aluminum extrusion industry. With over 20 years of experience, we specialize in process optimization, equipment efficiency, and workforce development. Our expertise covers training programs, KPI improvement, TPM implementation, die shop solutions, maintenance programs, and product development. We help companies enhance their aluminum extrusion operations through proven methodologies and industry best practices, ensuring sustainable growth and operational excellence."
+    },
     "emailPlaceholder": "Your email",
-    "footerTagline": "Craftsmanship evolved.",
+    "footerTagline": "Your Partner in Aluminium Extrusion",
     "home": "Home",
     "legal": "Legal",
     "navigation": "Navigation",
@@ -21,10 +158,35 @@
     "subscribeSuccess": "Thank you for subscribing to the newsletter",
     "terms": "Terms of Service",
     "docs": "Docs",
-    "title": "atølye"
+    "title": "inalcom",
+    "footnote1": "Inalcom provides comprehensive consulting and training services for the aluminum extrusion industry. With over 20 years of experience, we specialize in process optimization, equipment efficiency, and workforce development. Our expertise covers training programs, KPI improvement, TPM implementation, die shop solutions, maintenance programs, and product development. We help companies enhance their aluminum extrusion operations through proven methodologies and industry best practices, ensuring sustainable growth and operational excellence.",
+    "footnote2": "Inalcom website uses cookies to enhance your browser experience. These cookies can be used to remember changes you have made in our services. Please note that if you chose to block cookies, doing so may impair the Inalcom services or prevent certain of its elements from functioning.",
+    "footnote3": "Inalcom is committed to protecting your privacy and keeping your personal information confidential. We maintain strict data security measures and will never share your contact details or personal information with third parties without your explicit consent."
   },
   "DocsPage": {
     "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/test</code> in the browser address bar on this page.</p><p>If you change the locale to Turkish, the URL is localized accordingly (<code>/tr/deneme</code>).</p>",
     "title": "Test Page"
+  },
+  "Auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "createAccount": "Create an account",
+    "signInDescription": "Enter your email below to login to your account",
+    "signUpDescription": "Enter your information to create an account",
+    "alreadyHaveAccount": "Already have an account? Sign in",
+    "dontHaveAccount": "Don't have an account? Sign up",
+    "forgotPassword": "Forgot your password?",
+    "rememberMe": "Remember me",
+    "logIn": "LogIn",
+    "emailPlaceholder": "email@example.com",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "firstNamePlaceholder": "Max",
+    "lastNamePlaceholder": "Robinson"
   }
 }

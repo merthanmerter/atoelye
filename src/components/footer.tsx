@@ -1,84 +1,59 @@
-import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
-import NextLink from "next/link";
-import FooterNewsletter from "./footer-newsletter";
-import GitHubIcon from "./github-icon";
-import InstagramIcon from "./instagram-icon";
-import TwitterIcon from "./twitter-icon";
+import NextLink from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import FooterNewsletter from './footer-newsletter';
+import GoogleIcon from './google-icon';
+import LinkedinIcon from './linkedin-icon';
+import TwitterIcon from './twitter-icon';
+
 export default async function Footer({ locale }: { locale: string }) {
-  const t = await getTranslations({ locale, namespace: "Layout" });
+  const t = await getTranslations({ locale, namespace: 'Layout' });
   return (
-    <footer className='border-t border-border/30 bg-border/20 backdrop-blur-sm mt-auto'>
-      <div className='@container/footer max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 py-9'>
-        {/* Newsletter Section - First on mobile */}
-        <div className='md:order-3 flex justify-center md:justify-start'>
-          <FooterNewsletter />
-        </div>
+    <footer className="mt-auto border-t">
+      <div className="@container/footer mx-auto max-w-7xl px-4 py-16">
+        <div className="flex flex-col">
+          {/* Footnotes - Top on desktop, bottom on mobile */}
+          <ul className="order-2 flex flex-col gap-3 pt-16 text-xs md:order-1 md:pt-0 md:pb-16">
+            <li className="inline-block">
+              <sup className="pr-1">1</sup>
+              <div className="inline">{t('footnote1')}</div>
+            </li>
+            <li className="inline-block">
+              <sup className="pr-1">2</sup>
+              <div className="inline">{t('footnote2')}</div>
+            </li>
+            <li className="inline-block">
+              <sup className="pr-1">3</sup>
+              <div className="inline">{t('footnote3')}</div>
+            </li>
+          </ul>
 
-        {/* Links Section */}
-        <div className='grid grid-cols-2 gap-4 md:gap-8 md:order-2 mx-auto d'>
-          <div>
-            <h3 className='font-medium text-sm mb-3'>{t("navigation")}</h3>
-            <div className='flex flex-col gap-2 text-sm text-muted-foreground'>
-              <Link
-                href='/'
-                className='hover:text-foreground transition-colors'>
-                {t("home")}
-              </Link>
-              <Link
-                href='/docs'
-                className='hover:text-foreground transition-colors'>
-                {t("docs")}
-              </Link>
+          {/* Main content grid */}
+          <div className="order-1 grid grid-cols-1 gap-8 md:order-2 md:grid-cols-2">
+            {/* Newsletter Section - First on mobile */}
+            <div className="flex justify-center md:order-3 md:ml-auto md:justify-start">
+              <FooterNewsletter />
             </div>
-          </div>
-          <div>
-            <h3 className='font-medium text-sm mb-3'>{t("legal")}</h3>
-            <div className='flex flex-col gap-2 text-sm text-muted-foreground'>
-              <NextLink
-                href='#'
-                className='hover:text-foreground transition-colors'>
-                {t("privacy")}
-              </NextLink>
-              <NextLink
-                href='#'
-                className='hover:text-foreground transition-colors'>
-                {t("terms")}
-              </NextLink>
-            </div>
-          </div>
-        </div>
 
-        {/* Brand Section - Last on mobile */}
-        <div className='flex flex-col md:order-1 items-center md:items-start'>
-          <div className='flex items-center gap-2 mb-1'>
-            <span className='font-semibold text-lg'>atølye</span>
-          </div>
-          <p className='text-sm text-muted-foreground max-w-xs mb-4 text-center md:text-left'>
-            {t("footerTagline")}
-          </p>
-          <div className='flex items-center gap-3 text-muted-foreground'>
-            <NextLink
-              href='https://www.instagram.com/atoelye'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-foreground transition-colors'>
-              <InstagramIcon className='size-5' />
-            </NextLink>
-            <NextLink
-              href='https://x.com/atoelye'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-foreground transition-colors'>
-              <TwitterIcon className='size-5' />
-            </NextLink>
-            <NextLink
-              href='https://github.com/atoelye'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-foreground transition-colors'>
-              <GitHubIcon className='size-5' />
-            </NextLink>
+            {/* Brand Section - Last on mobile */}
+            <div className="flex flex-col items-center md:order-1 md:items-start">
+              <div className="mb-1 flex items-center gap-2">
+                <span className="font-semibold text-lg">inalcom</span>
+              </div>
+              <p className="mb-4 max-w-xs text-center text-muted-foreground text-sm md:text-left">
+                {t('footerTagline')}
+              </p>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <NextLink href="#">
+                  <LinkedinIcon className="size-5" />
+                </NextLink>
+                <NextLink href="#">
+                  <TwitterIcon className="size-5" />
+                </NextLink>
+                <NextLink href="#">
+                  <GoogleIcon className="size-5" />
+                </NextLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -13,11 +13,11 @@ const send = async ({
   subject: string;
   html: string;
 }): Promise<object> => {
-  const data = await fetch("https://api.resend.com/emails", {
-    method: "POST",
+  const data = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       from,
@@ -28,7 +28,7 @@ const send = async ({
   });
 
   if (!data.ok) {
-    throw new Error("Failed to send email") as Error;
+    throw new Error('Failed to send email') as Error;
   }
 
   return await data.json();

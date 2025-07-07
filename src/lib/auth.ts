@@ -1,18 +1,18 @@
-import { db } from "@/server/db";
-import { account, session, user, verification } from "@/server/db/schema";
-import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { admin, organization } from "better-auth/plugins";
+import { betterAuth } from 'better-auth';
+import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+import { admin, organization } from 'better-auth/plugins';
+import { db } from '@/server/db';
+import { account, session, user, verification } from '@/server/db/schema';
 
 export const auth = betterAuth({
   session: {
     cookieCache: {
       enabled: true,
-      maxAge: 34560000,
+      maxAge: 34_560_000,
     },
   },
   database: drizzleAdapter(db, {
-    provider: "pg",
+    provider: 'pg',
     schema: {
       user,
       account,
@@ -22,9 +22,9 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
-    async sendResetPassword(data, request) {
-      console.log(data, request);
-    },
+    // async sendResetPassword(data, request) {
+    //   console.log(data, request);
+    // },
   },
   plugins: [organization(), admin()],
 });

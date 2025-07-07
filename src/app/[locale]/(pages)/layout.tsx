@@ -1,5 +1,5 @@
-import Footer from "@/components/footer";
-import Navigation from "@/components/navigation";
+import Footer from '@/components/footer';
+import Navigation from '@/components/navigation';
 
 export default async function Layout({
   children,
@@ -11,8 +11,8 @@ export default async function Layout({
   const { locale } = await params;
   return (
     <>
-      <Navigation locale={locale} />
-      <main className='container px-4 mx-auto max-w-7xl'>{children}</main>
+      <Navigation />
+      <main className="container mx-auto max-w-7xl">{children}</main>
       <Footer locale={locale} />
     </>
   );

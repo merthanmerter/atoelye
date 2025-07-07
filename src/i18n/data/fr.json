@@ -1,0 +1,192 @@
+{
+  "HomePage": {
+    "signIn": "Se connecter",
+    "title": "Votre partenaire en extrusion d'aluminium",
+    "description": "Solutions leaders en technologie d'extrusion d'aluminium, équipements et services de conseil depuis plus de 20 ans.",
+    "contactUs": "Contactez-nous",
+    "exploreServices": "Explorer nos services",
+    "chart": {
+      "title": "Notre système fonctionne parce qu'il se concentre sur les personnes. Nous aidons les entreprises à changer leur culture pour que chacun puisse résoudre les problèmes rapidement et faire fonctionner les équipements plus efficacement.",
+      "subtitle": "Inalcom aide à rendre ces changements permanents et aide les entreprises à atteindre leur plein potentiel."
+    },
+    "aboutUs": {
+      "point1": "Plus de 20 ans d'expérience dans l'industrie de l'extrusion d'aluminium",
+      "point2": "Connaissance approfondie des marchés européens et mondiaux",
+      "point3": "Expertise en normes et réglementations européennes",
+      "point4": "Programmes de formation complets pour les professionnels de l'industrie",
+      "point5": "Développement marketing et stratégies de croissance d'entreprise",
+      "point6": "Administration des normes mondiales et conformité"
+    },
+    "services": {
+      "title": "Services",
+      "categories": [
+        {
+          "title": "ENTRAÎNEMENT",
+          "description": "Nous avons un système solide pour éduquer les gens dans le processus d'extrusion d'aluminium. Avec notre système, tous les doutes seront levés pour les opérateurs. C'est un système visuel pratique et fonctionnel. Nous offrons une formation spéciale pour les gestionnaires."
+        },
+        {
+          "title": "AMÉLIORER LES KPI (INDICATEURS CLÉS DE PERFORMANCE)",
+          "description": "Avec l'aide du client, il est possible de définir un programme capable d'améliorer la productivité, de réduire les rebuts, les coûts et les déchets."
+        },
+        {
+          "title": "TPM, OUTILS TOYOTA",
+          "description": "Nous avons une grande expérience pour installer la méthode TPM dans les lignes d'extrusion. Il est également possible de mettre en œuvre un grand nombre d'outils différents du système Toyota, tous développés sur une ligne d'extrusion."
+        },
+        {
+          "title": "MAGASIN DE MATRICES",
+          "description": "Nous avons des gens capables de résoudre tous les problèmes liés aux matrices. Nous coopérons avec les meilleurs fabricants de matrices. Nous développons des matrices pour nos clients. Nous avons un système pour réduire les matrices Knock off."
+        },
+        {
+          "title": "MAINTENANCE",
+          "description": "Avec notre aide, il est possible de trouver des solutions pour votre processus avec un investissement minimum. Développement d'un programme de maintenance préventive basé sur l'expérience des leaders du marché. Partage des connaissances avec nos clients."
+        },
+        {
+          "title": "DÉVELOPPER DES PRODUITS",
+          "description": "Nous avons les connaissances nécessaires pour développer de nouveaux produits. Nous sommes capables de faire des dessins de profils, etc. Est possible, nous aidons le client à trouver la meilleure extrudeuse pour le produit."
+        }
+      ]
+    },
+    "products": {
+      "title": "Produits"
+    },
+    "solutions": {
+      "title": "Solutions de Mesure Optique",
+      "description": "Nous fournissons des solutions complètes et une formation pour les dispositifs de mesure optique avancés dans le contrôle qualité de l'extrusion d'aluminium.",
+      "capabilities": [
+        "Sélection et acquisition d'équipements",
+        "Guidance d'installation et de configuration",
+        "Formation complète des opérateurs",
+        "Conseil en optimisation des processus"
+      ]
+    },
+    "contact": {
+      "getInTouch": "Contactez-nous",
+      "contactUsDescription": "Prêt à optimiser vos processus de fabrication ? Contactez-nous aujourd'hui pour discuter de vos besoins spécifiques et apprendre comment notre expertise peut vous aider à faire avancer votre entreprise."
+    },
+    "partners": {
+      "title": "Nos Partenaires",
+      "description": "Nous travaillons avec des entreprises leaders dans l'industrie de l'extrusion d'aluminium",
+      "companies": [
+        {
+          "name": "Altea",
+          "logo": "altea-logo.webp",
+          "description": "Système de lubrification sèche des billettes, le meilleur."
+        },
+        {
+          "name": "Alumat",
+          "logo": "alumat-logo.webp",
+          "description": "Groupe Almax-Alumat est l'un des meilleurs fabricants de matrices au monde",
+          "url": "https://alumat.it"
+        },
+        {
+          "name": "Damatool",
+          "logo": "damatool-logo.webp",
+          "description": "Outillage, machines d'atelier de matrices et bien plus",
+          "url": "https://damatool.com"
+        },
+        {
+          "name": "Extsup",
+          "logo": "extsup-logo.webp",
+          "description": "Équipements d'occasion",
+          "url": "https://extrusionsupplies.com"
+        },
+        {
+          "name": "Jaza",
+          "logo": "jaza-logo.webp",
+          "description": "Pièces de rechange pour les entreprises d'extrusion d'aluminium et plus",
+          "url": "https://jazaco.com"
+        },
+        {
+          "name": "LRH",
+          "logo": "lrh-logo.webp",
+          "description": "Gestion de projet"
+        },
+        {
+          "name": "Nitrex",
+          "logo": "nitrex-logo.webp",
+          "description": "Meilleure entreprise dans les processus de nitruration",
+          "url": "https://nitrex.com"
+        },
+        {
+          "name": "Oddometal",
+          "logo": "oddometal-logo.webp",
+          "description": "Fabricant d'extrusion d'aluminium",
+          "url": "https://oddometal.com"
+        },
+        {
+          "name": "Pixera",
+          "logo": "pixera-logo.webp",
+          "description": "Scanners pour mesurer les profils",
+          "url": "https://pixera.com.tr"
+        },
+        {
+          "name": "Surtech",
+          "logo": "surtech-logo.webp",
+          "description": "Fabricant d'anodisation et de revêtement en poudre"
+        },
+        {
+          "name": "Thermika",
+          "logo": "thermika-logo.webp",
+          "description": "Fours à matrices",
+          "url": "https://thermikasystems.com"
+        },
+        {
+          "name": "VK",
+          "logo": "vk-logo.webp",
+          "description": "Excellence opérationnelle grâce à des solutions commerciales intégrées.",
+          "url": "https://verkron.com"
+        }
+      ]
+    }
+  },
+  "Layout": {
+    "meta": {
+      "title": "Inalcom - Votre partenaire en extrusion d'aluminium",
+      "description": "Inalcom fournit des services complets de conseil et de formation pour l'industrie de l'extrusion d'aluminium. Avec plus de 20 ans d'expérience, nous nous spécialisons dans l'optimisation des processus, l'efficacité des équipements et le développement de la main-d'œuvre. Notre expertise couvre les programmes de formation, l'amélioration des KPI, la mise en œuvre du TPM, les solutions d'atelier de matrices, les programmes de maintenance et le développement de produits. Nous aidons les entreprises à améliorer leurs opérations d'extrusion d'aluminium grâce à des méthodologies éprouvées et aux meilleures pratiques de l'industrie, assurant une croissance durable et l'excellence opérationnelle."
+    },
+    "emailPlaceholder": "Votre email",
+    "footerTagline": "Votre partenaire en extrusion d'aluminium",
+    "home": "Accueil",
+    "legal": "Légal",
+    "navigation": "Navigation",
+    "newsletter": "Newsletter",
+    "privacy": "Politique de Confidentialité",
+    "subscribe": "S'abonner",
+    "subscribeErrorDuplicate": "Vous êtes déjà abonné à la newsletter",
+    "subscribeErrorInvalidEmail": "Adresse email invalide",
+    "subscribeErrorUnknown": "Échec de l'abonnement à la newsletter",
+    "subscribeSuccess": "Merci de vous être abonné à la newsletter",
+    "terms": "Conditions de Service",
+    "docs": "Documents",
+    "title": "inalcom",
+    "footnote1": "Inalcom fournit des services complets de conseil et de formation pour l'industrie de l'extrusion d'aluminium. Avec plus de 20 ans d'expérience, nous nous spécialisons dans l'optimisation des processus, l'efficacité des équipements et le développement de la main-d'œuvre. Notre expertise couvre les programmes de formation, l'amélioration des KPI, la mise en œuvre du TPM, les solutions d'atelier de matrices, les programmes de maintenance et le développement de produits. Nous aidons les entreprises à améliorer leurs opérations d'extrusion d'aluminium grâce à des méthodologies éprouvées et aux meilleures pratiques de l'industrie, assurant une croissance durable et l'excellence opérationnelle.",
+    "footnote2": "Le site web d'Inalcom utilise des cookies pour améliorer votre expérience de navigation. Ces cookies peuvent être utilisés pour se souvenir des modifications que vous avez apportées à nos services. Veuillez noter que si vous choisissez de bloquer les cookies, cela pourrait nuire aux services d'Inalcom ou empêcher certains de ses éléments de fonctionner.",
+    "footnote3": "Inalcom s'engage à protéger votre vie privée et à garder vos informations personnelles confidentielles. Nous maintenons des mesures de sécurité des données strictes et ne partagerons jamais vos coordonnées ou informations personnelles avec des tiers sans votre consentement explicite."
+  },
+  "DocsPage": {
+    "description": "<p>Les noms de chemins sont également internationalisés.</p><p>Si vous utilisez la langue par défaut Anglais, vous verrez <code>/en/test</code> dans la barre d'adresse du navigateur sur cette page.</p><p>Si vous changez la langue vers le Français, l'URL est localisée en conséquence (<code>/fr/test</code>).</p>",
+    "title": "Page de Test"
+  },
+  "Auth": {
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "createAccount": "Créer un compte",
+    "signInDescription": "Entrez votre email ci-dessous pour vous connecter à votre compte",
+    "signUpDescription": "Entrez vos informations pour créer un compte",
+    "alreadyHaveAccount": "Vous avez déjà un compte ? Se connecter",
+    "dontHaveAccount": "Vous n'avez pas de compte ? S'inscrire",
+    "forgotPassword": "Mot de passe oublié ?",
+    "rememberMe": "Se souvenir de moi",
+    "logIn": "Se connecter",
+    "emailPlaceholder": "email@exemple.com",
+    "passwordPlaceholder": "Mot de passe",
+    "confirmPasswordPlaceholder": "Confirmer le mot de passe",
+    "firstNamePlaceholder": "Max",
+    "lastNamePlaceholder": "Robinson"
+  }
+}

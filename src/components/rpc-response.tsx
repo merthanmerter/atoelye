@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { rpc } from "@/lib/rpc";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
+import { rpc } from '@/lib/rpc';
 
 export default function RpcResponse({ queryKey }: { queryKey: [string] }) {
   const { data, isLoading } = useQuery({
@@ -17,19 +17,20 @@ export default function RpcResponse({ queryKey }: { queryKey: [string] }) {
           },
           {
             init: {
-              credentials: "include",
+              credentials: 'include',
             },
-          },
+          }
         )
         .then((res) => res.text()),
   });
 
   return (
-    <div className='font-mono block my-3 bg-foreground text-background rounded-md p-2 mx-auto max-w-[200px] text-xs'>
+    <div className="mx-auto my-3 block max-w-[200px] rounded-md bg-foreground p-2 font-mono text-background text-xs">
       {isLoading ? (
-        "Loading..."
+        'Loading...'
       ) : (
-        <span dangerouslySetInnerHTML={{ __html: data || "" }} />
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Under control
+        <span dangerouslySetInnerHTML={{ __html: data || '' }} />
       )}
     </div>
   );

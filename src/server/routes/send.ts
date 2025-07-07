@@ -1,25 +1,25 @@
-import { honoRouter } from "@/lib/hono";
-import { resend } from "@/lib/resend";
-import { zValidator } from "@hono/zod-validator";
-import { z } from "zod";
+import { zValidator } from '@hono/zod-validator';
+import { z } from 'zod';
+import { honoRouter } from '@/lib/hono';
+import { resend } from '@/lib/resend';
 
 export const sendRouter = honoRouter().post(
-  "/",
+  '/',
   zValidator(
-    "json",
+    'json',
     z.object({
       email: z.string().email(),
       name: z.string().min(1),
-    }),
+    })
   ),
   async (c) => {
-    const { email, name } = c.req.valid("json");
+    const { email, name } = c.req.valid('json');
 
     const res = await resend.emails
       .send({
-        from: "Atølye <info@atoelye.com>",
+        from: 'Inalcom <info@inalcocompany.com>',
         to: [email],
-        subject: "Atølye",
+        subject: 'Inalcom',
         // react: We use html template instead of react template because it's not supported on edge runtime
         html: template(name),
       })
@@ -28,7 +28,7 @@ export const sendRouter = honoRouter().post(
       });
 
     return c.json(res);
-  },
+  }
 );
 
 const template = (name: string) => `
@@ -36,7 +36,7 @@ const template = (name: string) => `
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Welcome to Atølye</title>
+    <title>Welcome to Inalcom</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body { font-family: sans-serif; background-color: white; margin: 0; padding: 0; }
@@ -53,22 +53,22 @@ const template = (name: string) => `
   </head>
   <body>
     <div class="container">
-      <h1 class="heading">Welcome to Atølye!</h1>
+      <h1 class="heading">Welcome to Inalcom!</h1>
       <p class="text">Hello ${name},</p>
-      <p class="text">We're thrilled to welcome you to the Atølye community. Thank you for joining us on this journey.</p>
+      <p class="text">We're thrilled to welcome you to the Inalcom community. Thank you for joining us on this journey.</p>
       <div class="button-container">
-        <a href="https://atoelye.com" class="button">Get Started</a>
+        <a href="https://inalcom.com" class="button">Get Started</a>
       </div>
       <p class="text">If you have any questions or need assistance, please don't hesitate to reach out to our support team.</p>
       <p class="text text-right">
         Best regards,<br>
-        The Atølye Team
+        The Inalcom Team
       </p>
       <hr class="divider">
       <p class="footer">
-        © ${new Date().getFullYear()} Atølye. All rights reserved.<br>
-        <a href="https://atoelye.com/privacy" class="link">Privacy Policy</a> •
-        <a href="https://atoelye.com/terms" class="link">Terms of Service</a>
+        © ${new Date().getFullYear()} Inalcom. All rights reserved.<br>
+        <a href="https://inalcom.com/privacy" class="link">Privacy Policy</a> •
+        <a href="https://inalcom.com/terms" class="link">Terms of Service</a>
       </p>
     </div>
   </body>

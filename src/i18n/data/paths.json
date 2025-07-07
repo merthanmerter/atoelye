@@ -1,18 +1,23 @@
 {
   "/": "/",
-  "/email": {
-    "tr": "/email"
-  },
   "/login": {
-    "tr": "/giris"
+    "en": "/login",
+    "es": "/login",
+    "fr": "/login"
   },
   "/register": {
-    "tr": "/kayit"
+    "en": "/register",
+    "es": "/register",
+    "fr": "/register"
   },
   "/docs": {
-    "tr": "/dokumanlar"
+    "en": "/docs",
+    "es": "/docs",
+    "fr": "/docs"
   },
   "/account": {
-    "tr": "/hesap"
+    "en": "/account",
+    "es": "/account",
+    "fr": "/account"
   }
 }

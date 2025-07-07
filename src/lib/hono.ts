@@ -1,5 +1,5 @@
-import { Hono } from "hono";
-import type { auth } from "./auth";
+import { Hono } from 'hono';
+import type { auth } from './auth';
 
 export type AuthType = {
   Variables: {

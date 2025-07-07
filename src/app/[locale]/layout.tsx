@@ -1,19 +1,19 @@
-import Providers from "@/components/providers";
-import { routing } from "@/i18n/routing";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Geist, Geist_Mono } from "next/font/google";
-import { notFound } from "next/navigation";
-import "../globals.css";
+import { Geist, Geist_Mono } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import Providers from '@/components/providers';
+import { routing } from '@/i18n/routing';
+import '../globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 type Props = {
@@ -25,14 +25,14 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(props: Omit<Props, "children">) {
+export async function generateMetadata(props: Omit<Props, 'children'>) {
   const { locale } = await props.params;
 
-  const t = await getTranslations({ locale, namespace: "HomePage" });
+  const t = await getTranslations({ locale, namespace: 'Layout' });
 
   return {
-    title: t("title"),
-    description: t("description"),
+    title: t('meta.title'),
+    description: t('meta.description'),
   };
 }
 export default async function RootLayout({ children, params }: Props) {
@@ -45,18 +45,15 @@ export default async function RootLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <>
-      <html
-        lang={locale}
-        suppressHydrationWarning>
-        <head />
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col`}>
-          <NextIntlClientProvider>
-            <Providers>{children}</Providers>
-          </NextIntlClientProvider>
-        </body>
-      </html>
-    </>
+    <html lang={locale} suppressHydrationWarning>
+      <head />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-dvh flex-col antialiased`}
+      >
+        <NextIntlClientProvider>
+          <Providers>{children}</Providers>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }
